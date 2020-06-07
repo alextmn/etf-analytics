@@ -5,6 +5,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './service/auth-guard';
 import { ApiKeyComponent } from './components/api-key/api-key.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'api-key', component: ApiKeyComponent, canActivate: [AuthGuard] },
   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

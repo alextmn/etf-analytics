@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiKeyComponent } from './components/api-key/api-key.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ApiKeyComponent } from './components/api-key/api-key.component';
     LoginComponent,
     ChangePasswordComponent,
     DashboardComponent,
-    ApiKeyComponent
+    ApiKeyComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

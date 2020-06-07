@@ -1,0 +1,41 @@
+<div class="container main-div">
+    <div fxLayout="row" fxLayoutAlign="center center">
+
+        <mat-card fxFlex="400px" >
+            <mat-card-header>
+                <mat-icon mat-card-avatar>account_circle</mat-icon>
+                <mat-card-title>Create User</mat-card-title>
+            </mat-card-header>
+
+            <form [formGroup]="passwordForm" (ngSubmit)="onFormSubmit()">
+                <mat-card-content>
+                <div fxLayout="column">
+                    <mat-form-field >
+                        <input  matInput formControlName="email" placeholder="email address">
+                        <mat-error *ngIf="submitted && fval.email.errors">email required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field >
+                        <input type="password" matInput formControlName="oldPassword" placeholder="old password">
+                        <mat-error *ngIf="submitted && fval.oldPassword.errors">pasword required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field >
+                        <input type="password" matInput formControlName="newPassword1" placeholder="new password">
+                        <mat-error *ngIf="submitted && fval.newPassword1.errors?.required">pasword required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field >
+                        <input type="password" matInput formControlName="newPassword2" placeholder="confirm">
+                        <mat-error *ngIf="submitted && fval.newPassword2.errors?.required">pasword required</mat-error>
+                        <mat-error *ngIf="submitted && fval.newPassword2.errors?.notMatch">pasword has to match</mat-error>
+                    </mat-form-field>
+                </div>
+                </mat-card-content>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="accent" class="btn-block">Submit</button>
+                    <a mat-button [routerLink]='["/login"]'>Cancel</a>
+                </div>
+                <mat-error *ngIf="pwdError">Old password is incorrect</mat-error>
+            </form>
+        </mat-card>
+
+    </div>
+</div>

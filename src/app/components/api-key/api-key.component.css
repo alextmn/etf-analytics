@@ -1,0 +1,18 @@
+.main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-placeholder {
+    position: relative;
+  }
+  .placeholder{
+    position: absolute;
+    top: 18px;
+    bottom: 0;
+    height: 24px;
+    font-size: 25px;
+    left: -28px;
+    margin: auto;
+}

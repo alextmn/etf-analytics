@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  httpMock: false,
+  httpMock: true,
   apiUrl: '',
 };

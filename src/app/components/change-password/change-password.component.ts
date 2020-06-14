@@ -63,7 +63,11 @@ export class ChangePasswordComponent implements OnInit {
           this.submitted = false;
           this.passwordForm.reset();
         }),
-        catchError(e => {  this.pwdError = true; return of({}); })
+        catchError(e => {
+          console.log(e);
+          this.pwdError = true;
+          return of({});
+        })
       ).subscribe();
   }
 }

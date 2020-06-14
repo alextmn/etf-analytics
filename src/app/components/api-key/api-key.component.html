@@ -1,7 +1,7 @@
 <div class="container main-div">
     <mat-card fxFlex="600px">
         <mat-card-header>
-            <mat-icon mat-card-avatar>android</mat-icon>
+            <mat-icon mat-card-avatar>business</mat-icon>
             <mat-card-title>Api Keys</mat-card-title>
             <mat-card-subtitle>These keys should be trading only keys.</mat-card-subtitle>
         </mat-card-header>
@@ -25,7 +25,7 @@
                         </mat-form-field>
                         <mat-form-field  appearance="fill">
                             <mat-label>Crypto Exchange</mat-label>
-                            <select matNativeControl required>
+                            <select matNativeControl required formControlName="exchange">
                                 <option value="binance">Binance</option>
                                 <option value="poloniex">Poloniex</option>
                             </select>

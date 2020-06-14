@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-api-key',
@@ -11,12 +12,23 @@ export class ApiKeyComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     this.apiForm = this.formBuilder.group({
       apiKey: ['', Validators.required],
-      secretKey: ['', Validators.required]
+      secretKey: ['', Validators.required],
+      exchange: ['', Validators.required]
+    });
+    this.http.get<any>(`api-keys`).subscribe( a => {
+        console.log(a);
+        this.apiForm.setValue({
+          apiKey: a.apiKey,
+          secretKey: a.apiSecret,
+          exchange: a.exchange
+        });
     });
   }
   get fval() { return this.apiForm.controls; }
@@ -26,6 +38,15 @@ export class ApiKeyComponent implements OnInit {
     if (this.apiForm.invalid) {
       return;
     }
+
+    this.http.post<any>(`api-keys`,
+      {
+        apiKey: this.fval.apiKey.value,
+        apiSecret: this.fval.secretKey.value,
+        exchange: this.fval.exchange.value
+      }).subscribe(a => {
+        alert('Key has been updated');
+      }, error => alert('Error occured ' + error.message) );
   }
 
   toggleFn() {

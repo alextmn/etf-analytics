@@ -38,7 +38,7 @@ export class HttpOAuth2Interceptor implements HttpInterceptor {
 
             return next.handle(request.clone({
                 url: environment.apiUrl + request.url,
-                headers: new HttpHeaders({ Authorization: token }),
+                headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
             }));
         }
     }

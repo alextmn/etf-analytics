@@ -6,13 +6,13 @@
             <mat-card-subtitle>Current position on the exchange</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
-                <span class="left">{{ crypto }}</span>
-                <span class="right">{{cryptos[crypto].Value}} / {{ cryptos[crypto].USD | currency: "USD" }}</span>
+            <div id="crypto-container" *ngFor="let crypto of cryptos">
+                <span class="left">{{ crypto.Ticker }}</span>
+                <span class="right">{{cryptos[crypto].Balance}}</span>
               </div>
-              <div fxLayout="row" fxLayoutAlign="center center">
+              <!-- <div fxLayout="row" fxLayoutAlign="center center">
                  <h2>Protfolio Value: {{ 5344 | currency: "USD" }}</h2>
-                </div>
+                </div> -->
         </mat-card-content>
     </mat-card>
 </div>

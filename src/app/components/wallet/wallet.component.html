@@ -1,0 +1,18 @@
+<div class="container main-div">
+    <mat-card fxFlex="600px">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>account_balance</mat-icon>
+            <mat-card-title>Coin Balances</mat-card-title>
+            <mat-card-subtitle>Current position on the exchange</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div id="crypto-container" *ngFor="let crypto of cryptos">
+                <span class="left">{{ crypto.Ticker }}</span>
+                <span class="right">{{cryptos[crypto].Balance}}</span>
+              </div>
+              <!-- <div fxLayout="row" fxLayoutAlign="center center">
+                 <h2>Protfolio Value: {{ 5344 | currency: "USD" }}</h2>
+                </div> -->
+        </mat-card-content>
+    </mat-card>
+</div>

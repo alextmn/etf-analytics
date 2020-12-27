@@ -19,6 +19,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiKeyComponent } from './components/api-key/api-key.component';
 import { RegisterComponent } from './components/register/register.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { ChartsModule } from 'ng2-charts';
+import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { RegisterComponent } from './components/register/register.component';
     ChangePasswordComponent,
     DashboardComponent,
     ApiKeyComponent,
-    RegisterComponent
+    RegisterComponent,
+    WalletComponent,
+    AssetTabComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   // providers: [httpMockProvider],
   providers: [environment.httpMock ? httpMockProvider : httpOAuth2Provider],

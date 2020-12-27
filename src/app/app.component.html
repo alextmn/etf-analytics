@@ -1,26 +1,60 @@
-<div class="container cyan">
-  <mat-toolbar color="accent" *ngIf="userName">
-    <a mat-button [routerLink]='["dashboard"]'>Main</a>
-    <a mat-button [routerLink]='["api-key"]' [routerLinkActive]="['is-active']">Api Keys</a>
+<!-- <div class="container cyan"> -->
+<mat-toolbar class="main-toolbar">
+    <button mat-icon-button (click)="isExpanded = !isExpanded">
+        <mat-icon>menu</mat-icon>
+    </button>
     <span style="flex: 1 1 auto;"></span>
     <div>
-        <button mat-icon-button style="width:auto"
-         matTooltip="MY Profile" [matMenuTriggerFor]="accountMenu">
+        <button mat-icon-button style="width:auto" matTooltip="MY Profile" [matMenuTriggerFor]="accountMenu">
             <mat-icon>account_circle</mat-icon>
             {{ userName }}
         </button>
         <div fxFlex="5px"></div>
         <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
-            <a mat-menu-item [routerLink] = '"change-password"'>
-                <mat-icon >account_circle</mat-icon>Change Password
+            <a mat-menu-item [routerLink]='"change-password"'>
+                <mat-icon>account_circle</mat-icon>Change Password
             </a>
-            <button mat-menu-item (click) = "logout()">
-                <mat-icon >exit_to_app</mat-icon>Logout
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>Logout
             </button>
         </mat-menu>
     </div>
     <div fxFlex="25px"></div>
 </mat-toolbar>
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+        <mat-nav-list>
+            <mat-list-item class="parent">
+                <span class="sbi sbi-ebst"></span>
+                <span class="full-width" *ngIf="isExpanded">ETF</span>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item class="parent">
+                <span class="sbi sbi-eur"></span>
+                <span class="full-width" *ngIf="isExpanded">Forex</span>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item class="parent">
+                <span class="sbi sbi-btc"></span>
+                <span class="full-width" *ngIf="isExpanded">Crypto</span>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item class="parent">
+                <span class="sbi sbi-dtr"></span>
+                <span class="full-width" *ngIf="isExpanded">ETF Optimal Portfolio</span>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+        </mat-nav-list>
+    </mat-sidenav>
 
+    <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+
+
+
+<!-- </div> -->

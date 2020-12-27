@@ -13,3 +13,20 @@ color: blue;
     justify-content: center;
     align-items: center;
   }
+
+ .asset-tab {
+  background-color: #1e9ff2;
+  color: white;
+  padding: 1.5vh;
+  margin-left: 3vh;
+ }
+
+.asset-container {
+  margin-left: 3vh;
+  background-color: white;
+  color: darkgray;
+}
+.text-inside-grid {
+  position: absolute;
+  left: 5px;
+}

@@ -1,4 +1,51 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <app-asset-tab chartStyle='orange' title='BTC' subTitle='Bitcoin' icon='sbi-btc'></app-asset-tab>
+    <app-asset-tab chartStyle='gray' title='ETH' subTitle='Etherium' icon='sbi-eth'></app-asset-tab>
+    <app-asset-tab chartStyle='blue' title='XRP' subTitle='Ripple' icon='sbi-xrp'></app-asset-tab>
+</div>
+<div>
+    <div fxFlex="33">
+        <div class="asset-tab">
+            BTC
+        </div>
+        <mat-grid-list cols="2" rowHeight="6:1" class="asset-container">
+            <mat-grid-tile>
+                <div class="text-inside-grid">Annulized Return</div>
+            </mat-grid-tile>
+            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Annulized Volatility</div>
+            </mat-grid-tile>
+            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Active Return</div>
+            </mat-grid-tile>
+            <mat-grid-tile>18%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Active Volatility</div>
+            </mat-grid-tile>
+            <mat-grid-tile>28%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Sharp Ratio</div>
+            </mat-grid-tile>
+            <mat-grid-tile>28%</mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div fxFlex="1"></div>
+    <div style="background-color: white;height: 50vh;" fxFlex="65">
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+            [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+    </div>
+</div>
+
+
 <div class="container main-div">
+    <div fxLayout="column" fxFlex="15">
+        <div style="background-color: aqua;">
+            BTC
+        </div>
+    </div>
+
     <mat-card fxFlex="600px">
         <mat-card-header>
             <mat-icon mat-card-avatar>account_balance</mat-icon>
@@ -6,13 +53,6 @@
             <mat-card-subtitle>Current position on the exchange</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <div id="crypto-container" *ngFor="let crypto of cryptos">
-                <span class="left">{{ crypto.Ticker }}</span>
-                <span class="right">{{cryptos[crypto].Balance}}</span>
-              </div>
-              <!-- <div fxLayout="row" fxLayoutAlign="center center">
-                 <h2>Protfolio Value: {{ 5344 | currency: "USD" }}</h2>
-                </div> -->
         </mat-card-content>
     </mat-card>
 </div>

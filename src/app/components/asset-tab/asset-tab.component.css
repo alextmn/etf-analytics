@@ -1,0 +1,36 @@
+.info-card {
+    /* height: 10vh; */
+    padding: 0px;
+    width: 45vh;
+    margin: 1vh;
+    margin-bottom: 1.875rem;
+    border: none;
+    box-shadow: 0 2px 18px 1px rgba(49,53,72,.1);
+    border-radius: .45rem;
+  }
+
+.info-card:hover{
+    /* border: 8px solid black;
+    background-color: green; */
+    box-shadow: 0 8px 25px 6px rgba(49,53,72,.1);
+ }
+ 
+.sbi { font-size: 4vw; cursor: pointer; margin-right: 1vw;}
+.sbi:hover::before { color: black; }
+
+.cc-blue:before {
+  color: #1e9ff2;
+} 
+
+.cc-gray:before {
+  color: #78909C;
+} 
+
+
+.text-right {
+  text-align: right!important;
+}
+.indicator{
+ color: green; 
+ font-size: 1vw;
+}

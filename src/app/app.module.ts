@@ -22,6 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 import { ChartsModule } from 'ng2-charts';
 import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    HighchartsChartModule,
   ],
   // providers: [httpMockProvider],
   providers: [environment.httpMock ? httpMockProvider : httpOAuth2Provider],

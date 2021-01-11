@@ -1,8 +1,6 @@
-import { Component,  OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BaseChartDirective, Color, Label } from 'ng2-charts';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-
+import * as Highcharts from "highcharts/highstock";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,72 +17,84 @@ export class DashboardComponent implements OnInit {
   //   BCH: {Value: 2343, USD: 876},
   // };
 
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56, 55, 40], label: 'Activly Managed' },
-    { data: [28, 48, 40, 19, 86, 27, 90,65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56, 55, 40], label: 'BTC' },
-  ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: (ChartOptions & { annotation: any }) = {
-    responsive: true,
-    scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
-      xAxes: [{}],
-      yAxes: [
-        {
-          id: 'y-axis-0',
-          position: 'left',
-        }
-      ]
-    },
-    annotation: {
-      annotations: [
-        {
-          type: 'line',
-          mode: 'vertical',
-          scaleID: 'x-axis-0',
-          value: 'March',
-          borderColor: 'orange',
-          borderWidth: 2,
-          label: {
-            enabled: true,
-            fontColor: 'orange',
-            content: 'LineAnno'
-          }
-        },
-      ],
-    },
-  };
-  public lineChartColors: Color[] = [
-    { // green
-      backgroundColor: 'rgba(0, 255, 0, 0.3)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    }
-  ];
-  public lineChartLegend = true;
-  public lineChartType: ChartType = 'line';
-
-  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
-  
   cryptos = [];
-  objectKeys = Object.keys;
+  signalMaxTable = [];
+  signalMinTable = [];
+
+  Highcharts: typeof Highcharts = Highcharts;
+  chartOptions: Highcharts.Options;
+  updateFlag = false;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get<any>(`balances`).subscribe(a => {
       this.cryptos = a;
     });
+    this.chart();
   }
-  
-}
+
+  private async chart() {
+    const allData = await this.http.get<any>(`assets/test-data-ticks.json`).toPromise();
+    this.signalMaxTable = allData.maxs;
+    this.signalMinTable = allData.mins;
+    const data=allData.signal;
+    const ticks = Object.keys(data.price).map(a => [parseInt(a)*1000, data.price[a]]);
+    const magnitude = Object.keys(data.price).map(a => [parseInt(a)*1000, data.signal[a] - 1]);
+    const activePrice = Object.keys(data.price).map(a => [parseInt(a)*1000, data.active_price[a]]);
+
+    // Create the chart
+    this.chartOptions = {
+      rangeSelector: {
+        selected: 2
+      },
+
+      legend: {
+        enabled: true
+      },
+      title: {
+        text: 'BTC to USD Price',
+      },
+      subtitle: {
+        text: 'hover to see price and signals at points'
+      },
+      yAxis: [{
+        labels: {
+          align: 'left'
+        },
+        height: '80%',
+        resize: {
+          enabled: true
+        }
+      }, {
+        labels: {
+          align: 'left'
+        },
+        top: '80%',
+        height: '20%',
+        offset: 0
+      }],
+
+      series: [{
+        data: ticks,
+        type: 'line',
+        color: 'lightblue',
+        name: 'Price',
+      }, {
+        data: activePrice,
+        type: 'line',
+        color: 'orange',
+        name: 'Actively Managed',
+      }, {
+        name: 'Signal Strength',
+        data: magnitude,
+        yAxis: 1,
+        type: 'column',
+        color: "orange"
+      }]
+    };
+
+    this.updateFlag = true;
+
+      
+    }
+  }

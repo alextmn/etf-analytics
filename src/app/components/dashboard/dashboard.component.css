@@ -21,6 +21,17 @@ color: blue;
   margin-left: 3vh;
  }
 
+ .table-tab {
+  margin-left: 3vh;
+  text-align: right;
+  border: 1px solid #1e9ff2;
+  border-collapse:collapse;
+ }
+ 
+.highlight {
+  background-color: #e7e4e0;
+}
+
 .asset-container {
   margin-left: 3vh;
   background-color: white;
@@ -29,4 +40,35 @@ color: blue;
 .text-inside-grid {
   position: absolute;
   left: 5px;
+}
+
+.idicator_up {
+  color: green; 
+  font-size: .7vw;
+}
+
+.idicator_down {
+  color: red; 
+ font-size: .7vw;
+}
+
+.info-signal {
+  /* height: 10vh; */
+  padding: 0px;
+  width: 25vw;
+  margin: 1vh;
+  margin-bottom: 1.875rem;
+  border: none;
+  box-shadow: 0 2px 18px 1px rgba(49,53,72,.1);
+  border-radius: .45rem;
+}
+.current-signal {
+  font-size: 1.5vw; 
+  color: #1e9ff2;
+  font-weight: bold;
+}
+
+.current-signal-date {
+  font-size: 0.8vw; 
+  color: darkgray;
 }

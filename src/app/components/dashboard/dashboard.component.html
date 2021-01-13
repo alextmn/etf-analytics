@@ -4,24 +4,21 @@
     <app-asset-tab chartStyle='blue' title='XRP' subTitle='Ripple' icon='sbi-xrp'></app-asset-tab>
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <div  fxLayout="column"  fxLayoutAlign="center center" class="info-signal">
+    <div fxLayout="column" fxLayoutAlign="center center" class="info-signal">
         <span>Last Signal Value</span>
         <span class="current-signal">1.654</span>
-        <span class="current-signal-date">10/01/2021</span>
+        <span class="current-signal-date">regular market, 10/01/2021</span>
     </div>
-    <div class="info-signal" fxLayoutAlign="center center">
+    <div class="info-signal" fxLayoutAlign="center center" fxLayout="column">
         <button mat-button>Subscribe</button>
+        <mat-checkbox class="chkSubscribe">Send me only strong signals</mat-checkbox>
     </div>
 </div>
 <div style="margin:30px;">
-    <div style="background-color: white;" >
-        <highcharts-chart  
-        *ngIf = "chartOptions"
-        [Highcharts]="Highcharts" 
-        [options]="chartOptions"  
-        [constructorType]="'stockChart'" 
-        style="width: 100%; height: 600px; display: block;" 
-        [(update)]="updateFlag" ></highcharts-chart>
+    <div style="background-color: white;">
+        <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions"
+            [constructorType]="'stockChart'" style="width: 100%; height: 600px; display: block;"
+            [(update)]="updateFlag"></highcharts-chart>
     </div>
 </div>
 <div style="margin-top:10px;">
@@ -29,14 +26,18 @@
         <div class="asset-tab">
             BTC Best Price Max Signal History
         </div>
-        <table class = "table-tab">
-            <th>Date</th><th>Signal</th><th>Price</th><th colspan="2">Next 6 month Max</th><th colspan="2">Next 6 month Min</th>
+        <table class="table-tab">
+            <th>Date</th>
+            <th>Signal</th>
+            <th>Price</th>
+            <th colspan="2">Next 6 month Max</th>
+            <th colspan="2">Next 6 month Min</th>
             <tr *ngFor="let it of signalMaxTable;let index = index" [ngClass]="{'highlight': 0 === index % 2}">
                 <td>{{it.date}}</td>
                 <td>{{it.signal | number : '1.2-2' }}</td>
                 <td>{{it.price | number : '1.2-2' }}</td>
                 <td>
-                    {{it.max_return | number : '1.2-2' }} 
+                    {{it.max_return | number : '1.2-2' }}
                 </td>
                 <td>
                     {{it.max_return_pct | number : '1.2-2' }}
@@ -45,7 +46,7 @@
                     <span class="material-icons idicator_down" *ngIf="it.max_return_pct  < 0">south</span>
                 </td>
                 <td>
-                    {{it.min_return | number : '1.2-2' }} 
+                    {{it.min_return | number : '1.2-2' }}
                 </td>
                 <td>{{it.min_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.min_return_pct">%</span>
@@ -81,14 +82,18 @@
         <div class="asset-tab">
             BTC Best Price Min Signal History
         </div>
-        <table class = "table-tab">
-            <th>Date</th><th>Signal</th><th>Price</th><th colspan="2">Next 6 month Max</th><th colspan="2">Next 6 month Min</th>
+        <table class="table-tab">
+            <th>Date</th>
+            <th>Signal</th>
+            <th>Price</th>
+            <th colspan="2">Next 6 month Max</th>
+            <th colspan="2">Next 6 month Min</th>
             <tr *ngFor="let it of signalMinTable;let index = index" [ngClass]="{'highlight': 0 === index % 2}">
                 <td>{{it.date}}</td>
                 <td>{{it.signal | number : '1.2-2' }}</td>
                 <td>{{it.price | number : '1.2-2' }}</td>
                 <td>
-                    {{it.max_return | number : '1.2-2' }} 
+                    {{it.max_return | number : '1.2-2' }}
                 </td>
                 <td>
                     {{it.max_return_pct | number : '1.2-2' }}
@@ -97,7 +102,7 @@
                     <span class="material-icons idicator_down" *ngIf="it.max_return_pct  < 0">south</span>
                 </td>
                 <td>
-                    {{it.min_return | number : '1.2-2' }} 
+                    {{it.min_return | number : '1.2-2' }}
                 </td>
                 <td>{{it.min_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.min_return_pct">%</span>
@@ -106,33 +111,45 @@
                 </td>
             </tr>
         </table>
-       
+
     </div>
     <div fxFlex="2"></div>
 </div>
 
-<mat-grid-list cols="2" rowHeight="6:1" class="asset-container" style="display: none;">
-    <mat-grid-tile>
-        <div class="text-inside-grid">Annulized Return</div>
-    </mat-grid-tile>
-    <mat-grid-tile>8%</mat-grid-tile>
-    <mat-grid-tile>
-        <div class="text-inside-grid">Annulized Volatility</div>
-    </mat-grid-tile>
-    <mat-grid-tile>8%</mat-grid-tile>
-    <mat-grid-tile>
-        <div class="text-inside-grid">Active Return</div>
-    </mat-grid-tile>
-    <mat-grid-tile>18%</mat-grid-tile>
-    <mat-grid-tile>
-        <div class="text-inside-grid">Active Volatility</div>
-    </mat-grid-tile>
-    <mat-grid-tile>28%</mat-grid-tile>
-    <mat-grid-tile>
-        <div class="text-inside-grid">Sharp Ratio</div>
-    </mat-grid-tile>
-    <mat-grid-tile>28%</mat-grid-tile>
-</mat-grid-list>
+<div style="margin-top:10px;">
+    <div fxFlex="49" fxLayout="column" >
+        <div class="asset-tab">
+            BTC Best Price Max Signal History
+        </div>
+        <mat-grid-list cols="2" rowHeight="6:1" class="asset-container">
+            <mat-grid-tile>
+                <div class="text-inside-grid">Annulized Return</div>
+            </mat-grid-tile>
+            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Annulized Volatility</div>
+            </mat-grid-tile>
+            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Active Return</div>
+            </mat-grid-tile>
+            <mat-grid-tile>18%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Active Volatility</div>
+            </mat-grid-tile>
+            <mat-grid-tile>28%</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Sharp Ratio</div>
+            </mat-grid-tile>
+            <mat-grid-tile>28%</mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div fxFlex="49" fxLayout="column" >
+        <div class="asset-tab">
+            BTC Best Price Max Signal History
+        </div>
+    </div>
+</div>    
 
 <div class="container main-div">
     <div fxLayout="column" fxFlex="15">

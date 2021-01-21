@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   cryptos = [];
   signalMaxTable = [];
   signalMinTable = [];
+  allData:any = {};
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options;
@@ -34,10 +35,10 @@ export class DashboardComponent implements OnInit {
   }
 
   private async chart() {
-    const allData = await this.http.get<any>(`assets/test-data-ticks.json`).toPromise();
-    this.signalMaxTable = allData.maxs;
-    this.signalMinTable = allData.mins;
-    const data=allData.signal;
+    this.allData = await this.http.get<any>(`assets/test-data-ticks.json`).toPromise();
+    this.signalMaxTable = this.allData.maxs;
+    this.signalMinTable = this.allData.mins;
+    const data=this.allData.signal;
     const ticks = Object.keys(data.price).map(a => [parseInt(a)*1000, data.price[a]]);
     const magnitude = Object.keys(data.price).map(a => [parseInt(a)*1000, data.signal[a] - 1]);
     const activePrice = Object.keys(data.price).map(a => [parseInt(a)*1000, data.active_price[a]]);
@@ -52,10 +53,10 @@ export class DashboardComponent implements OnInit {
         enabled: true
       },
       title: {
-        text: 'BTC to USD Price',
+        text: 'BTC to USD Backtest Using Asset-Cash Ratio',
       },
       subtitle: {
-        text: 'hover to see price and signals at points'
+        text: 'Hover to see passive price and actively managed value at points'
       },
       yAxis: [{
         labels: {

@@ -6,12 +6,21 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
     <div fxLayout="column" fxLayoutAlign="center center" class="info-signal">
         <span>Last Signal Value</span>
-        <span class="current-signal">1.654</span>
-        <span class="current-signal-date">regular market, 10/01/2021</span>
+        <span class="current-signal">{{allData?.last_signal.toFixed(2)}}</span>
+        <span class="current-signal-date" style="color: black;">{{allData.last_signal_flag}} market, {{allData.last_timestamp * 1000 | date }}</span>
+        <span class="current-signal-date">Market is normal when the signal is around 0. 
+            if the maket is greater then 1 or more then it is strongly overbought. 
+            if the maket is greater then -1 or less then it is strongly oversold. </span>
     </div>
     <div class="info-signal" fxLayoutAlign="center center" fxLayout="column">
-        <button mat-button>Subscribe</button>
-        <mat-checkbox class="chkSubscribe">Send me only strong signals</mat-checkbox>
+        <span>Asset-Cash Ratio</span>
+        <span class="current-signal">{{100 * allData?.last_signal_ratio.toFixed(2)}}%</span>
+        <span class="current-signal-date">Asset-Cash Ratio shows much of the asset should be increased or decreased. 
+            When the signal is 0, then the ratio is 100%.
+            E.g. 80% means the market is oversold and it better to sell 20% of the asset. If the ratio is 120% the market is oversold and 20% of the asset should be borrowed. </span>
+
+        <!-- <button mat-button>Subscribe</button>
+        <mat-checkbox class="chkSubscribe">Send me only strong signals</mat-checkbox> -->
     </div>
 </div>
 <div style="margin:30px;">
@@ -55,28 +64,6 @@
                 </td>
             </tr>
         </table>
-        <mat-grid-list cols="2" rowHeight="6:1" class="asset-container" style="display: none;">
-            <mat-grid-tile>
-                <div class="text-inside-grid">Annulized Return</div>
-            </mat-grid-tile>
-            <mat-grid-tile>8%</mat-grid-tile>
-            <mat-grid-tile>
-                <div class="text-inside-grid">Annulized Volatility</div>
-            </mat-grid-tile>
-            <mat-grid-tile>8%</mat-grid-tile>
-            <mat-grid-tile>
-                <div class="text-inside-grid">Active Return</div>
-            </mat-grid-tile>
-            <mat-grid-tile>18%</mat-grid-tile>
-            <mat-grid-tile>
-                <div class="text-inside-grid">Active Volatility</div>
-            </mat-grid-tile>
-            <mat-grid-tile>28%</mat-grid-tile>
-            <mat-grid-tile>
-                <div class="text-inside-grid">Sharp Ratio</div>
-            </mat-grid-tile>
-            <mat-grid-tile>28%</mat-grid-tile>
-        </mat-grid-list>
     </div>
     <div fxFlex="49" fxLayout="column">
         <div class="asset-tab">
@@ -125,46 +112,36 @@
             <mat-grid-tile>
                 <div class="text-inside-grid">Annulized Return</div>
             </mat-grid-tile>
-            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>{{ (100*allData.avg_return_pct).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
                 <div class="text-inside-grid">Annulized Volatility</div>
             </mat-grid-tile>
-            <mat-grid-tile>8%</mat-grid-tile>
+            <mat-grid-tile>{{ (100*allData.avg_return_vol).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
                 <div class="text-inside-grid">Active Return</div>
             </mat-grid-tile>
-            <mat-grid-tile>18%</mat-grid-tile>
+            <mat-grid-tile>{{ (100*allData.avg_active_return_pct).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
                 <div class="text-inside-grid">Active Volatility</div>
             </mat-grid-tile>
-            <mat-grid-tile>28%</mat-grid-tile>
+            <mat-grid-tile>{{ (100*allData.avg_active_return_vol).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
                 <div class="text-inside-grid">Sharp Ratio</div>
             </mat-grid-tile>
-            <mat-grid-tile>28%</mat-grid-tile>
+            <mat-grid-tile>{{ (allData.avg_return_sharp).toFixed(2) }}</mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">Active Sharp Ratio</div>
+            </mat-grid-tile>
+            <mat-grid-tile>{{ (allData.avg_active_return_sharp).toFixed(2) }}</mat-grid-tile>
         </mat-grid-list>
     </div>
     <div fxFlex="49" fxLayout="column" >
         <div class="asset-tab">
-            BTC Best Price Max Signal History
+            Technology
         </div>
+        <p class="asset-container"><br/>
+            To calculate the signal and asset cash ratio we are using probabilistic programming, which allows to adjust the model based on historical observations. 
+            probabilistic programming is a relatively new field in AI, and we will publish an hands-on article shortly to explain our technology.
+        </p>
     </div>
 </div>    
-
-<div class="container main-div">
-    <div fxLayout="column" fxFlex="15">
-        <div style="background-color: aqua;">
-            BTC
-        </div>
-    </div>
-
-    <mat-card fxFlex="600px">
-        <mat-card-header>
-            <mat-icon mat-card-avatar>account_balance</mat-icon>
-            <mat-card-title>Coin Balances</mat-card-title>
-            <mat-card-subtitle>Current position on the exchange</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-        </mat-card-content>
-    </mat-card>
-</div>

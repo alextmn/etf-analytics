@@ -55,12 +55,13 @@ color: blue;
 .info-signal {
   /* height: 10vh; */
   padding: 0px;
-  width: 25vw;
+  width: 40vw;
   margin: 1vh;
   margin-bottom: 1.875rem;
   border: none;
   box-shadow: 0 2px 18px 1px rgba(49,53,72,.1);
   border-radius: .45rem;
+  padding: 5px;
 }
 .current-signal {
   font-size: 1.5vw; 

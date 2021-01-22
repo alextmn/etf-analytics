@@ -23,6 +23,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
 import { ChartsModule } from 'ng2-charts';
 import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
+import { MarketComponent } from './components/market/market.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
     ApiKeyComponent,
     RegisterComponent,
     WalletComponent,
-    AssetTabComponent
+    AssetTabComponent,
+    AssetItemComponent,
+    MarketComponent
   ],
   imports: [
     BrowserModule,

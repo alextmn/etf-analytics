@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     this.signalMinTable = this.allData.mins;
     const data=this.allData.signal;
     const ticks = Object.keys(data.price).map(a => [parseInt(a)*1000, data.price[a]]);
-    const magnitude = Object.keys(data.price).map(a => [parseInt(a)*1000, data.signal[a] - 1]);
+    const magnitude = Object.keys(data.price).map(a => [parseInt(a)*1000, data.signal[a]]);
     const activePrice = Object.keys(data.price).map(a => [parseInt(a)*1000, data.active_price[a]]);
 
     // Create the chart

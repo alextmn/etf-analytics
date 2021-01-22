@@ -6,11 +6,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './service/auth-guard';
 import { ApiKeyComponent } from './components/api-key/api-key.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MarketComponent } from './components/market/market.component';
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'market', component: MarketComponent },
   { path: 'api-key', component: ApiKeyComponent, canActivate: [AuthGuard] },
   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },

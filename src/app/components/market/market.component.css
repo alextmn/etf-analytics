@@ -1,0 +1,12 @@
+.asset-container {
+    margin-left: 1vw;
+}
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+h4 {
+    font-size: 1rem;
+    color: dimgray;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Highcharts from "highcharts/highstock";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,17 +26,22 @@ export class DashboardComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options;
   updateFlag = false;
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.http.get<any>(`balances`).subscribe(a => {
       this.cryptos = a;
     });
-    this.chart();
+    this.route.queryParams.subscribe(p => {
+      this.chart(p.t);
+    });
+    
   }
 
-  private async chart() {
-    this.allData = await this.http.get<any>(`assets/test-data-ticks.json`).toPromise();
+  private async chart(ticker:string) {
+    this.allData = await this.http.get<any>(`assets/${ticker}.json`).toPromise();
     this.signalMaxTable = this.allData.maxs;
     this.signalMinTable = this.allData.mins;
     const data=this.allData.signal;

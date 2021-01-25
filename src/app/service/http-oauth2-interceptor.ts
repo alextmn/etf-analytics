@@ -37,7 +37,7 @@ export class HttpOAuth2Interceptor implements HttpInterceptor {
             console.log(`going to  ${url}`);
 
             return next.handle(request.clone({
-                url: request.url.indexOf('test-data') > -1 ? request.url : environment.apiUrl + request.url,
+                url: request.url.indexOf('assets') > -1 ? request.url : environment.apiUrl + request.url,
                 headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
             }));
         }

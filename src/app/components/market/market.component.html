@@ -1,10 +1,10 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <app-asset-tab chartStyle='orange' title='BTC' subTitle='Bitcoin' icon='sbi-btc'></app-asset-tab>
-    <app-asset-tab chartStyle='gray' title='ETH' subTitle='Etherium' icon='sbi-eth'></app-asset-tab>
-    <app-asset-tab chartStyle='blue' title='XRP' subTitle='Ripple' icon='sbi-xrp'></app-asset-tab>
+    <app-asset-tab chartStyle='orange' title='BTC' ticker='BTC-USD' subTitle='Bitcoin' icon='sbi-btc'></app-asset-tab>
+    <app-asset-tab chartStyle='gray' title='ETH' ticker='ETH-USD' subTitle='Etherium' icon='sbi-eth'></app-asset-tab>
+    <app-asset-tab chartStyle='blue' title='BCH' ticker='BCH-USD' subTitle='Bitcon Cash' icon='sbi-bch'></app-asset-tab>
 </div>
 <div class="asset-container">
-    <h1>Crypto Market Trading Signals</h1>
+    <h1>{{CONFIG[marketType]?.name}} Market Trading Signals</h1>
     <h4>The assets below show signals strength, which usually oscillates in the range [-1;+1] when the market is in regular conditions. When the signal is below -1 or above +1 the market is considered to be overbought and oversold respectfully.</h4>
     <h4>We calculate the asset-cash ratio which represents the risk. When the signal is 0, meaning the market is regular (flat) then the ratio is 100% (100% - asset, 0% - cash). When the signal is for example +1, indicating the market is overbought  then the ratio could be 90% (90% - asset, 10% - cash). When the signal is for example -1, indicating the market is oversold then the ratio could be 110% (100% - asset, 10% - cash to be borrowed). </h4>
     

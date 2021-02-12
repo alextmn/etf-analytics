@@ -30,7 +30,12 @@
 .text-right {
   text-align: right!important;
 }
-.indicator{
+.indicatorGreen{
  color: green; 
  font-size: 1vw;
 }
+
+.indicatorRed{
+  color: red; 
+  font-size: 1vw;
+ }

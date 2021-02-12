@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
@@ -8,11 +9,15 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./asset-tab.component.css']
 })
 export class AssetTabComponent implements OnInit {
+  pchChange: number
+  price: number
+
   @ViewChild('chartCanvas') chartCanvas: ElementRef;
   @Input() chartStyle = 'gray';
   @Input() title: string;
   @Input() subTitle: string;
   @Input() icon: string;
+  @Input() ticker: string;
 
   chartStyleMap= {
       orange: {
@@ -33,11 +38,11 @@ export class AssetTabComponent implements OnInit {
   };
   
  
-  constructor() { }
+  constructor(private http: HttpClient,) { }
 
   public lineChartData: ChartDataSets[] = [];
 
-  public lineChartLabels: Label[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+  public lineChartLabels: Label[] = ["1", "2", "3", "4", "5", "6", "7"];
   public lineChartOptions: ChartOptions = {
     responsive: !0,
     maintainAspectRatio: !1,
@@ -70,11 +75,16 @@ export class AssetTabComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.chartStyleMap[this.chartStyle].borderColor)
   }
-
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
+    const data = await this.http.get<any>(`assets/${this.ticker}.json`).toPromise();
+    this.pchChange=(100 * data.last_change_pct);
+    this.price = data.last_price;
+    this.showData(data.last_prices);
+  }
+  showData(data) {
     this.lineChartData = [{
       label: "BTC",
-      data: [20, 18, 35, 60, 38, 40, 70],
+      data: data,
       borderColor: this.chartStyleMap[this.chartStyle].borderColor,
       borderWidth: 1.5,
       pointRadius: 0
@@ -90,4 +100,6 @@ export class AssetTabComponent implements OnInit {
       }
     ]
   }
+
+  
 }

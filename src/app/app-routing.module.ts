@@ -10,7 +10,7 @@ import { MarketComponent } from './components/market/market.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: '', pathMatch: 'full', redirectTo: 'market' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'market', component: MarketComponent },
   { path: 'api-key', component: ApiKeyComponent, canActivate: [AuthGuard] },

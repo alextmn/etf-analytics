@@ -10,15 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  // cryptos = {
-  //   USDT: {Value: 4.55, USD: 5333.5},
-  //   BTC: {Value: .55, USD: 6545},
-  //   XRP: {Value: 54354, USD: 5466},
-  //   LTC: {Value: 233, USD: 4322},
-  //   BCH: {Value: 2343, USD: 876},
-  // };
-
-  cryptos = [];
   signalMaxTable = [];
   signalMinTable = [];
   allData:any = {};
@@ -31,13 +22,9 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.http.get<any>(`balances`).subscribe(a => {
-      this.cryptos = a;
-    });
     this.route.queryParams.subscribe(p => {
       this.chart(p.t);
     });
-    
   }
 
   private async chart(ticker:string) {

@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="isExpanded = !isExpanded">
         <mat-icon>menu</mat-icon>
     </button>
-    <h1>Active Investment Management</h1>
+    <h1>ETF Active Investment Dashboard</h1>
     <span style="flex: 1 1 auto;"></span>
     <div>
         <button mat-icon-button style="width:auto" matTooltip="MY Profile" [matMenuTriggerFor]="accountMenu">
@@ -26,29 +26,44 @@
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
         <mat-nav-list>
             <mat-list-item class="parent">
-                <span class="sbi sbi-ebst"></span>
-                <span class="full-width" *ngIf="isExpanded"><a routerLink="/market">ETF</a></span>
+                <a routerLink="/market" >
+                    <span class="sbi sbi-ebst"></span>
+                    <span class="full-width" *ngIf="isExpanded">Top US ETF</span>
+                </a>
             </mat-list-item>
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <span class="sbi sbi-eur"></span>
-                <span class="full-width" *ngIf="isExpanded">Forex</span>
+                <a [routerLink]="'/market'" [queryParams]="{type:'world'}">
+                    <span class="sbi sbi-wicc"></span>
+                    <span class="full-width" *ngIf="isExpanded">World ETF</span>
+                </a>
             </mat-list-item>
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <span class="sbi sbi-btc"></span>
-                <span class="full-width" *ngIf="isExpanded">Crypto</span>
+                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}">
+                    <span class="sbi sbi-sol"></span>
+                    <span class="full-width" *ngIf="isExpanded">Sector ETF</span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <mat-list-item class="parent">
+                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}">
+                    <span class="sbi sbi-eur"></span>
+                    <span class="full-width" *ngIf="isExpanded">Forex</span>
+                </a>
             </mat-list-item>
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <span class="sbi sbi-dtr"></span>
-                <span class="full-width" *ngIf="isExpanded">ETF Optimal Portfolio</span>
+                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}">
+                    <span class="sbi sbi-btc"></span>
+                    <span class="full-width" *ngIf="isExpanded">Crypto Coins</span>
+                </a>
             </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list>
         </mat-nav-list>
     </mat-sidenav>
 

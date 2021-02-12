@@ -1,18 +1,19 @@
 <mat-card class="info-card orange-card">
     <mat-card-content>
         <div fxLayout="column">
-            <div class="content">
-                <div fxFlex="5"></div>
-                <div fxFlex="15" fxLayoutAlign="center center">
-                    <i class="sbi" [title]="title" [class]="chartStyleMap[chartStyle].coinCss + ' ' + icon"></i>
+            <div fxLayoutAlign="space-between center" style="margin: 1vw;">
+                <div fxLayout="row">
+                    <div  fxLayoutAlign="center center">
+                        <i class="sbi" [title]="title" [class]="chartStyleMap[chartStyle].coinCss + ' ' + icon"></i>
+                    </div>
+                    <div >
+                        <h2>{{title}}</h2>
+                        <h3>{{subTitle}}</h3>
+                    </div>
                 </div>
-                <div fxFlex="15">
-                    <h2>{{title}}</h2>
-                    <h3>{{subTitle}}</h3>
-                </div>
-                <div fxFlex="60" class="text-right">
-                    <h2>$9,980</h2>
-                    <h3>31% <span class="material-icons indicator">north</span></h3>
+                <div  class="text-right">
+                    <h2>${{price?.toFixed(2)}}</h2>
+                    <h3>{{ pchChange?.toFixed(2) }}% <span [class]="'material-icons indicator' + (pchChange > 0 ? 'Green' : 'Red')">{{ pchChange > 0 ? 'north' : 'south'}}</span></h3>
                 </div>
             </div>
             <div style="display: block;">

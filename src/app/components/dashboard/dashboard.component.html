@@ -1,9 +1,9 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <app-asset-tab chartStyle='orange' title='BTC' ticker='BTC-USD' subTitle='Bitcoin' icon='sbi-btc'></app-asset-tab>
-    <app-asset-tab chartStyle='gray' title='ETH' ticker='ETH-USD' subTitle='Etherium' icon='sbi-eth'></app-asset-tab>
-    <app-asset-tab chartStyle='blue' title='BCH' ticker='BCH-USD' subTitle='Bitcon Cash' icon='sbi-xrp'></app-asset-tab>
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="marketType && CONFIG[marketType]?.t">
+    <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
+    <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
+    <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
 </div>
-<h1>SP500 Index</h1>
+<h1>{{resolve}}</h1>
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
     <div fxLayout="column" fxLayoutAlign="center center" class="info-signal">
         <div fxLayout="row" >
@@ -44,7 +44,7 @@
 <div style="margin-top:10px;">
     <div fxFlex="49" fxLayout="column">
         <div class="asset-tab">
-            BTC Best Price Max Signal History
+            {{ticker}} Best Price Max Signal History
         </div>
         <table class="table-tab">
             <th>Date</th>
@@ -78,7 +78,7 @@
     </div>
     <div fxFlex="49" fxLayout="column">
         <div class="asset-tab">
-            BTC Best Price Min Signal History
+            {{ticker}} Best Price Min Signal History
         </div>
         <table class="table-tab">
             <th>Date</th>
@@ -117,7 +117,7 @@
 <div style="margin-top:10px;">
     <div fxFlex="49" fxLayout="column" >
         <div class="asset-tab">
-            BTC Best Price Max Signal History
+            {{ticker}} Best Price Max Signal History
         </div>
         <mat-grid-list cols="2" rowHeight="6:1" class="asset-container">
             <mat-grid-tile>

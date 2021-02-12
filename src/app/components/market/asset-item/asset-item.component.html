@@ -3,20 +3,22 @@
         <div class="assetTitle">{{item.ticker}}</div>
         <div fxLayout="column" fxLayoutAlign="center center">
             <div class="assetNumber signal">
-                <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker}">{{item.last_signal  | number : '1.2-2' }}</a></div>
+                <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">{{item.last_signal  | number : '1.2-2' }}</a></div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center center">
             <div class="assetNumber">{{item.last_price  | number : '1.2-2' }}</div>
             <div class="assetHint">price</div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center">
+        <!-- <div fxLayout="column" fxLayoutAlign="center center">
             <div class="assetNumber">{{item.last_signal_ratio  | number : '1.0-0' }}%</div>
             <div class="assetHint">asset ratio</div>
-        </div>
+        </div> -->
     </div>
     <div fxLayout="row"  fxLayoutAlign="space-around center" >
         <div class="assetHint">
-            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker}">passive return: {{item.avg_return_pct  | number : '1.0-1'}}%, active: {{item.avg_active_return_pct  | number : '1.0-1'}}%</a>
+            <!-- <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">passive return: {{item.avg_return_pct  | number : '1.0-1'}}%, active: {{item.avg_active_return_pct  | number : '1.0-1'}}%</a> -->
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">{{resolve(item.fullTicker)}}</a>
+            
         </div>
     </div>
 </div>

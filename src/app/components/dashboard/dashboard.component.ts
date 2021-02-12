@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Highcharts from "highcharts/highstock";
 import { ActivatedRoute } from '@angular/router';
+import { Setting } from 'src/app/app-config';
+import { TickerResolver } from 'src/app/app-config';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  CONFIG = Setting
   signalMaxTable = [];
   signalMinTable = [];
   allData:any = {};
+  marketType: string;
+  ticker: string;
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options;
@@ -23,7 +28,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(p => {
-      this.chart(p.t);
+      this.chart(this.ticker = p.t);
+      this.marketType = p.type;
     });
   }
 
@@ -46,7 +52,7 @@ export class DashboardComponent implements OnInit {
         enabled: true
       },
       title: {
-        text: 'BTC to USD Backtest Using Asset-Cash Ratio',
+        text: `${this.resolve} Backtest Using Asset-Cash Ratio`,
       },
       subtitle: {
         text: 'Hover to see passive price and actively managed value at points'
@@ -90,5 +96,9 @@ export class DashboardComponent implements OnInit {
     this.updateFlag = true;
 
       
-    }
+  }
+
+   get resolve() {
+    return  TickerResolver(this.ticker)
+    } 
   }

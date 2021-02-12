@@ -2,7 +2,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="CONFIG[marketType]?.t">
     <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
     <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
-    <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon'></app-asset-tab>
+    <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
 </div>
 <div class="asset-container">
     <h1>{{CONFIG[marketType]?.name}} Market Trading Signals</h1>
@@ -11,7 +11,7 @@
     
     <mat-grid-list [cols]="breakpoint" rowHeight="11vh" (window:resize)="onResize($event)" >
         <mat-grid-tile  *ngFor="let it of assetList">
-            <app-asset-item [item]= "it"></app-asset-item>
+            <app-asset-item [item]= "it" [type]='marketType'></app-asset-item>
         </mat-grid-tile>
     </mat-grid-list>    
 </div>

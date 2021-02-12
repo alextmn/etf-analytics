@@ -14,11 +14,12 @@
     font-weight: bold;
   }
   .assetHint {
-    font-size: .8vw;    
+    font-size: 1.0vw;    
     color: white;
+    text-align: center;
   }
   .assetNumber {
-    font-size: 0.9vw;    
+    font-size: 1.4vw;    
     color: black;
   }
   .signal {

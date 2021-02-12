@@ -39,3 +39,15 @@
   color: red; 
   font-size: 1vw;
  }
+
+ .circle-icon {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2vw;
+    vertical-align: middle;
+    padding: 1vw;
+    font-size: 1.5vw;
+    font-style: normal;
+}

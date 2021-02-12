@@ -101,5 +101,9 @@ export class AssetTabComponent implements OnInit {
     ]
   }
 
+  get iconSbi() {
+    return this.icon.indexOf('sbi') > -1 ? this.icon : null
+  }
+
   
 }

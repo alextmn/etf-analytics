@@ -1,7 +1,8 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <app-asset-tab chartStyle='orange' title='BTC' ticker='BTC-USD' subTitle='Bitcoin' icon='sbi-btc'></app-asset-tab>
-    <app-asset-tab chartStyle='gray' title='ETH' ticker='ETH-USD' subTitle='Etherium' icon='sbi-eth'></app-asset-tab>
-    <app-asset-tab chartStyle='blue' title='BCH' ticker='BCH-USD' subTitle='Bitcon Cash' icon='sbi-bch'></app-asset-tab>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="CONFIG[marketType]?.t">
+    <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
+    <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
+    <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon'></app-asset-tab>
 </div>
 <div class="asset-container">
     <h1>{{CONFIG[marketType]?.name}} Market Trading Signals</h1>

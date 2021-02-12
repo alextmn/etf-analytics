@@ -76,3 +76,8 @@ color: blue;
 .chkSubscribe {
   font-size: 0.7vw; 
 }
+
+h1 {
+  font-size: 3vw; 
+  text-align: center;
+}

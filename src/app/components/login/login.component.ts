@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
   }
   get fval() { return this.loginForm.controls; }
 
+  signInWithGoogle(): void {
+
+  }
+
+  signInWithFB(): void {
+
+  }
   onFormSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {

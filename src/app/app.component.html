@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="isExpanded = !isExpanded">
         <mat-icon>menu</mat-icon>
     </button>
-    <h1>ETF Active Investment Dashboard</h1>
+    <h1>ETF Active Analytics Dashboard</h1>
     <span style="flex: 1 1 auto;"></span>
     <div>
         <button mat-icon-button style="width:auto" matTooltip="MY Profile" [matMenuTriggerFor]="accountMenu">
@@ -12,9 +12,9 @@
         </button>
         <div fxFlex="5px"></div>
         <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
-            <a mat-menu-item [routerLink]='"change-password"'>
+            <button mat-menu-item (click)="changePassword()">
                 <mat-icon>account_circle</mat-icon>Change Password
-            </a>
+            </button>
             <button mat-menu-item (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>Logout
             </button>
@@ -71,22 +71,20 @@
     <footer style="padding: 1vw;">
         <p>&copy; Artifirm Analytics 2021</p>
         <p style="line-height:10px; font-size: 10px; color: darkgray;">Disclaimers<br>
-          Crypto assets, also referred to as blockchain and distributed ledger technology,
-          do not fall under definition of a “security” under US securities laws. As such
-          any information on this page is not intended to be an investment advice.
-          Crypto assets involve numerous risks, including, among others, market risk,
-          counterparty default risk and liquidity risk. No crypto asset or derivative is
-          suitable for all investors.
-          Past performance of strategies described on this page is not necessarily a guide
+          All data presented on the website is analytics based on the previous history only. 
+          Any information on these pages is not intended to be an investment advice.
+          Aby trading including ETFs involve numerous risks, including, among others, market risk,
+          counterparty default risk and liquidity risk. 
+          Past performance of strategies described on these page is not necessarily a guide
           to future performance.
-          Neither the information nor any opinion expressed on this page constitutes an
+          Neither information nor any opinion expressed on this page constitutes an
           offer or an invitation to make an offer, to buy or sell any securities or other
           financial instrument or any derivative related to such securities or instruments.
-          This page is not intended to provide personal investment advice and it does not
+          Thesr pages are not intended to provide personal investment advice and it does not
           take into account the specific investment objectives, financial situation and the
           particular needs of, and is not directed to, any specific person(s).
           Subscribers to this page should seek financial advice regarding the
-          appropriateness of holding crypto assets.<br/>
+          appropriateness of holding assets.<br/>
           In no event will we be liable for any loss or damage including without limitation, 
           indirect or consequential loss or damage, or any loss or damage whatsoever arising 
           from loss of data or profits arising out of, or in connection with, the use 

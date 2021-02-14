@@ -1,33 +1,34 @@
-<div class="container main-div">
-    <div fxLayout="row" fxLayoutAlign="center center">
+<mat-dialog-content>
+    <mat-card fxFlex="400px" >
+        <mat-card-header>
+            <mat-icon mat-card-avatar>account_circle</mat-icon>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
 
-        <mat-card fxFlex="400px" >
-            <mat-card-header>
-                <mat-icon mat-card-avatar>account_circle</mat-icon>
-                <mat-card-title>Login</mat-card-title>
-            </mat-card-header>
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+            <mat-card-content>
+            <div fxLayout="column">
+                <mat-form-field >
+                    <input matInput formControlName="username" placeholder="username">
+                    <mat-error *ngIf="submitted && fval.username.errors">name required</mat-error>
+                </mat-form-field>
 
-            <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
-                <mat-card-content>
-                <div fxLayout="column">
-                    <mat-form-field >
-                        <input matInput formControlName="username" placeholder="username">
-                        <mat-error *ngIf="submitted && fval.username.errors">name required</mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field >
-                        <input type ="password" matInput formControlName="password" placeholder="password">
-                        <mat-error *ngIf="submitted && fval.password.errors">pasword required</mat-error>
-                    </mat-form-field>
+                <mat-form-field >
+                    <input type ="password" matInput formControlName="password" placeholder="password">
+                    <mat-error *ngIf="submitted && fval.password.errors">pasword required</mat-error>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()" style="margin-right: 1vw;"><span class="fab fa-google"></span></button>
+                    <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fab fa-facebook"></span></button>                
                 </div>
-                </mat-card-content>
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <button mat-stroked-button color="accent" class="btn-block">Submit</button>
-                    <a mat-button [routerLink]='["/register"]'>Create New User</a>
-                </div>
-                <mat-error *ngIf="loginError">Login is incorrect</mat-error>
-            </form>
-        </mat-card>
-
-    </div>
-</div>
+            </div>
+            </mat-card-content>
+            <mat-error *ngIf="loginError">Login is incorrect</mat-error>
+        </form>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-stroked-button color="accent" class="btn-block">Submit</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <a mat-button [routerLink]='["/register"]'>Create New User</a>
+</mat-dialog-actions>    

@@ -39,6 +39,7 @@
         <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions"
             [constructorType]="'stockChart'" style="width: 100%; height: 600px; display: block;"
             [(update)]="updateFlag"></highcharts-chart>
+        <h3 style="text-align: right;color: dimgray;">move range slidebar to see active price gain per slidebar's period</h3>
     </div>
 </div>
 <div style="margin-top:10px;">

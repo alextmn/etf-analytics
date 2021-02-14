@@ -57,6 +57,20 @@ export class DashboardComponent implements OnInit {
       subtitle: {
         text: 'Hover to see passive price and actively managed value at points'
       },
+      xAxis: {
+        events: {
+          setExtremes: function(e: any) {
+            //console.log(e);
+            const aMin = activePrice.find(a => a[0] >= e.min  )
+            const pMin = ticks.find(a => a[0] >= e.min )
+            const r = pMin[1] / aMin[1];
+            const chart = e.target.chart;
+            chart.series[1].update({
+              data: activePrice.map(a=> [a[0], a[1] * r])
+          }, true); 
+          }
+        },
+      },
       yAxis: [{
         labels: {
           align: 'left'

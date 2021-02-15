@@ -25,6 +25,7 @@ import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
 import { MarketComponent } from './components/market/market.component';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -50,9 +51,32 @@ import { MarketComponent } from './components/market/market.component';
     HttpClientModule,
     ChartsModule,
     HighchartsChartModule,
+    SocialLoginModule
   ],
   // providers: [httpMockProvider],
-  providers: [environment.httpMock ? httpMockProvider : httpOAuth2Provider],
+  providers: [
+    environment.httpMock ? httpMockProvider : httpOAuth2Provider,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              'clientId'
+              )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

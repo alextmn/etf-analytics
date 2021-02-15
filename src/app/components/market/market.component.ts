@@ -30,7 +30,7 @@ export class MarketComponent implements OnInit {
 
   private async fetch() {
     this.assetList = 
-      await this.http.get<any>(this.CONFIG[this.marketType].url).toPromise();
+      await this.http.get<any>(this.CONFIG[this.marketType].url+`?r=${Math.random()}`).toPromise();
   }
 
   onResize(event) {

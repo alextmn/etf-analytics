@@ -6,16 +6,19 @@
     <h1>ETF Active Analytics Dashboard</h1>
     <span style="flex: 1 1 auto;"></span>
     <div>
-        <button mat-icon-button style="width:auto" matTooltip="MY Profile" [matMenuTriggerFor]="accountMenu">
+        <button mat-icon-button style="width:auto" matTooltip="My Profile" [matMenuTriggerFor]="accountMenu">
             <mat-icon>account_circle</mat-icon>
             {{ userName }}
         </button>
         <div fxFlex="5px"></div>
         <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
-            <button mat-menu-item (click)="changePassword()">
+            <button mat-menu-item (click)="login()" *ngIf="!userName">
+                <mat-icon>login</mat-icon>Login
+            </button>
+            <button mat-menu-item (click)="changePassword()" *ngIf="userName">
                 <mat-icon>account_circle</mat-icon>Change Password
             </button>
-            <button mat-menu-item (click)="logout()">
+            <button mat-menu-item (click)="logout()" *ngIf="userName">
                 <mat-icon>exit_to_app</mat-icon>Logout
             </button>
         </mat-menu>
@@ -72,8 +75,11 @@
         <p>&copy; Artifirm Analytics 2021</p>
         <p style="line-height:10px; font-size: 10px; color: darkgray;">Disclaimers<br>
           All data presented on the website is analytics based on the previous history only. 
+          Nothing contained in or on this Site should be construed as a solicitation of an offer to 
+          buy or offer, or a recommendation, to acquire or dispose of any security, commodity, 
+          cryptocoin, investment or to engage in any other transaction. 
           Any information on these pages is not intended to be an investment advice.
-          Aby trading including ETFs involve numerous risks, including, among others, market risk,
+          Trading including ETFs involve numerous risks, including, among others, market risk,
           counterparty default risk and liquidity risk. 
           Past performance of strategies described on these page is not necessarily a guide
           to future performance.

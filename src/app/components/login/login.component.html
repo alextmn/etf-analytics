@@ -1,5 +1,5 @@
 <mat-dialog-content>
-    <mat-card fxFlex="400px" >
+    <mat-card fxFlex="30vw" >
         <mat-card-header>
             <mat-icon mat-card-avatar>account_circle</mat-icon>
             <mat-card-title>Login</mat-card-title>
@@ -27,8 +27,12 @@
         </form>
     </mat-card>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-stroked-button color="accent" class="btn-block">Submit</button>
-    <button mat-button mat-dialog-close>Cancel</button>
-    <a mat-button [routerLink]='["/register"]'>Create New User</a>
+<mat-dialog-actions  fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+        <button mat-stroked-button color="accent" >Submit</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+    </div>
+    <a mat-stroked-button color="accent" class="btn-glow-blue"
+        (click)="register()"
+     style="font-size: smaller;">Create New User</a>
 </mat-dialog-actions>    

@@ -2,7 +2,7 @@
     <div fxLayout="row"  fxLayoutAlign="space-around center" >
         <div class="assetTitle">{{item.ticker}}</div>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <div class="assetNumber signal">
+            <div class="assetNumber signal" [style] = "'background-color: '+ assetColor +';'">
                 <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">{{item.last_signal  | number : '1.2-2' }}</a></div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center center">

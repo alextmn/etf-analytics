@@ -1,7 +1,6 @@
-<div class="container main-div">
-    <div fxLayout="row" fxLayoutAlign="center center">
 
-        <mat-card fxFlex="400px" >
+<mat-dialog-content>
+        <mat-card fxFlex="35vw" >
             <mat-card-header>
                 <mat-icon mat-card-avatar>account_circle</mat-icon>
                 <mat-card-title>Create User</mat-card-title>
@@ -26,13 +25,11 @@
                     </mat-form-field>
                 </div>
                 </mat-card-content>
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <button mat-stroked-button color="accent" class="btn-glow-blue">Submit</button>
-                    <a mat-button [routerLink]='["/login"]'>Cancel</a>
-                </div>
                 <mat-error *ngIf="pwdError">Registration Error</mat-error>
             </form>
         </mat-card>
-
-    </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-stroked-button color="accent" class="btn-glow-blue">Register</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

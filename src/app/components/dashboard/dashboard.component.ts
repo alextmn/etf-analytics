@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private async chart(ticker:string) {
-    this.allData = await this.http.get<any>(`assets/${ticker}.json`).toPromise();
+    this.allData = await this.http.get<any>(`assets/${ticker}.json?r=${Math.random()}`).toPromise();
     this.signalMaxTable = this.allData.maxs;
     this.signalMinTable = this.allData.mins;
     const data=this.allData.signal;

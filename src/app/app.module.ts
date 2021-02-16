@@ -26,6 +26,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
 import { MarketComponent } from './components/market/market.component';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
     HttpClientModule,
     ChartsModule,
     HighchartsChartModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxGoogleAnalyticsModule.forRoot('G-6S001VRE31'),
+    NgxGoogleAnalyticsRouterModule
   ],
   // providers: [httpMockProvider],
   providers: [

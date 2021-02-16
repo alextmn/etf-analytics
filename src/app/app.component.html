@@ -29,7 +29,7 @@
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a routerLink="/market" >
+                <a routerLink="/market"  fxLayout="row" fxLayoutAlign="left center">
                     <span class="sbi sbi-ebst"></span>
                     <span class="full-width" *ngIf="isExpanded">Top ETF</span>
                 </a>
@@ -37,7 +37,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'world'}">
+                <a [routerLink]="'/market'" [queryParams]="{type:'world'}" fxLayout="row" fxLayoutAlign="left center">
                     <span class="sbi sbi-wicc"></span>
                     <span class="full-width" *ngIf="isExpanded">World ETF</span>
                 </a>
@@ -45,7 +45,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}">
+                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}" fxLayout="row" fxLayoutAlign="left center">
                     <span class="sbi sbi-sol"></span>
                     <span class="full-width" *ngIf="isExpanded">Sector ETF</span>
                 </a>
@@ -54,7 +54,7 @@
 
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}">
+                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}" fxLayout="row" fxLayoutAlign="left center">
                     <span class="sbi sbi-eur"></span>
                     <span class="full-width" *ngIf="isExpanded">Forex</span>
                 </a>
@@ -62,7 +62,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}">
+                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}" fxLayout="row" fxLayoutAlign="left center">
                     <span class="sbi sbi-btc"></span>
                     <span class="full-width" *ngIf="isExpanded">Crypto Coins</span>
                 </a>
@@ -72,7 +72,7 @@
 
     <router-outlet></router-outlet>
     <footer style="padding: 1vw;">
-        <p>&copy; Artifirm Analytics 2021</p>
+        <p>&copy; <a href="http://artifirm.com"> Artifirm Analytics 2021</a></p>
         <p style="line-height:10px; font-size: 10px; color: darkgray;">Disclaimers<br>
           All data presented on the website is analytics based on the previous history only. 
           Nothing contained in or on this Site should be construed as a solicitation of an offer to 

@@ -18,3 +18,6 @@
     font-family: Quicksand,Georgia,"Times New Roman",Times,serif;
     font-size: 1.4vw;
 }
+.parent {
+ margin: 1vh;   
+}

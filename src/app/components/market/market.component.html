@@ -10,7 +10,9 @@
     <h4>For each asset class, the system generates a signal on a z-score scale. This means that under most normal circumstances the signal would oscillate between [-1;+1], however under more extreme conditions, it could go to 4-6x range, and even higher.</h4>
     <h4>A positive value signal is considered overbought/expensive; a negative value signal is oversold/cheap.</h4>
     <h4>We also calculate the asset-cash ratio which represents the risk. When the signal is 0, meaning the market is regular (flat) then the ratio is 100% (100% - asset, 0% - cash). When the signal is for example +1, indicating the market is overbought then the ratio could be 90% (90% - asset, 10% - cash). When the signal is for example -1, indicating the market is oversold then the ratio could be 110% (100% - asset, 10% - cash to be borrowed).</h4>
-    <h4>Please click on the signal value to see signal's details.</h4>
+    <h4>For more information and methods please check out our article: <a href="https://alextmn1.medium.com/etf-analysis-using-probabilistic-probabilistic-programing-b67716dc8f27" target="_blank">ETF Analysis Using Probabilistic Programing</a>
+    </h4>
+    <small>Please click on the signal value to see signal's details.</small>
     <mat-grid-list [cols]="breakpoint" rowHeight="11vh" (window:resize)="onResize($event)" >
         <mat-grid-tile  *ngFor="let it of assetList">
             <app-asset-item [item]= "it" [type]='marketType'></app-asset-item>

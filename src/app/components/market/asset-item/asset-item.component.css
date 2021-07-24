@@ -2,32 +2,31 @@
     box-shadow: 0 1px 20px 1px rgba(30,159,242,.6);
     background-color: rgba(30,159,242,.6);
     color: white;
-    padding: 0.7vw;
+    padding: 6px;
   }
   .asset-tile {
-    width: 20vw;
     display: inline-block;
   }
   .assetTitle {
-    font-size: 2.3vw;    
+    font-size: 40px;    
     color: blue;
     font-weight: bold;
   }
   .assetHint {
-    font-size: 0.85vw;    
+    font-size: 15px;    
     color: white;
     text-align: center;
   }
   .assetNumber {
-    font-size: 1.4vw;    
+    font-size: 25px;    
     color: black;
   }
   .signal {
     color: white;
     font-weight: bold; 
-    font-size: 2vw;
-    padding: 1vh;
-    margin: .4vh;
+    font-size: 40px;
+    padding: 10px;
+    margin: 2px;
   }
 
   a:visited {

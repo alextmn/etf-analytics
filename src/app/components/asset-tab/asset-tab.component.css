@@ -1,8 +1,7 @@
 .info-card {
     /* height: 10vh; */
     padding: 0px;
-    width: 25vw;
-    margin: 1vh;
+    margin: 5px;
     margin-bottom: 1.875rem;
     border: none;
     box-shadow: 0 2px 18px 1px rgba(49,53,72,.1);
@@ -15,7 +14,7 @@
     box-shadow: 0 8px 25px 6px rgba(49,53,72,.1);
  }
  
-.sbi { font-size: 4vw; cursor: pointer; margin-right: 1vw;}
+.sbi { font-size: 40px; cursor: pointer; margin-right: 10px;}
 .sbi:hover::before { color: black; }
 
 .cc-blue:before {
@@ -41,13 +40,12 @@
  }
 
  .circle-icon {
-    width: 2vw;
-    height: 2vw;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     text-align: center;
-    line-height: 2vw;
     vertical-align: middle;
-    padding: 1vw;
-    font-size: 1.5vw;
+    padding: 10px;
+    font-size: 30px;
     font-style: normal;
 }

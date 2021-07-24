@@ -51,23 +51,17 @@
             <th>Date</th>
             <th>Signal</th>
             <th>Price</th>
-            <th colspan="2">Next 6 month Max</th>
-            <th colspan="2">Next 6 month Min</th>
+            <th colspan="1">Next 6 month Max</th>
+            <th colspan="1">Next 6 month Min</th>
             <tr *ngFor="let it of signalMaxTable;let index = index" [ngClass]="{'highlight': 0 === index % 2}">
                 <td>{{it.date}}</td>
                 <td>{{it.signal | number : '1.2-2' }}</td>
                 <td>{{it.price | number : '1.2-2' }}</td>
                 <td>
-                    {{it.max_return | number : '1.2-2' }}
-                </td>
-                <td>
                     {{it.max_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.max_return_pct">%</span>
                     <span class="material-icons idicator_up" *ngIf="it.max_return_pct  > 0">north</span>
                     <span class="material-icons idicator_down" *ngIf="it.max_return_pct  < 0">south</span>
-                </td>
-                <td>
-                    {{it.min_return | number : '1.2-2' }}
                 </td>
                 <td>{{it.min_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.min_return_pct">%</span>
@@ -85,23 +79,17 @@
             <th>Date</th>
             <th>Signal</th>
             <th>Price</th>
-            <th colspan="2">Next 6 month Max</th>
-            <th colspan="2">Next 6 month Min</th>
+            <th colspan="1">Next 6 month Max</th>
+            <th colspan="1">Next 6 month Min</th>
             <tr *ngFor="let it of signalMinTable;let index = index" [ngClass]="{'highlight': 0 === index % 2}">
                 <td>{{it.date}}</td>
                 <td>{{it.signal | number : '1.2-2' }}</td>
                 <td>{{it.price | number : '1.2-2' }}</td>
                 <td>
-                    {{it.max_return | number : '1.2-2' }}
-                </td>
-                <td>
                     {{it.max_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.max_return_pct">%</span>
                     <span class="material-icons idicator_up" *ngIf="it.max_return_pct  > 0">north</span>
                     <span class="material-icons idicator_down" *ngIf="it.max_return_pct  < 0">south</span>
-                </td>
-                <td>
-                    {{it.min_return | number : '1.2-2' }}
                 </td>
                 <td>{{it.min_return_pct | number : '1.2-2' }}
                     <span *ngIf="it.min_return_pct">%</span>

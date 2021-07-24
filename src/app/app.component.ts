@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { SocialAuthService } from 'angularx-social-login';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent  implements OnInit {
 
   isExpanded = true;
   constructor(
+    private breakpointObserver: BreakpointObserver,
     private authService: SocialAuthService,
     public dialog: MatDialog,
     private router: Router,
@@ -25,6 +27,15 @@ export class AppComponent  implements OnInit {
    this.authService.authState.subscribe((user) => {
       console.log(user);
    });
+   this.breakpointObserver
+      .observe(['(min-width: 600px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.isExpanded = true;
+        } else {
+          this.isExpanded = false;
+        }
+      });
   }
 
   get userName(): string {

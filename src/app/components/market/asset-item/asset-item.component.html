@@ -21,4 +21,12 @@
             
         </div>
     </div>
+    <div fxLayout="row"  fxLayoutAlign="space-between center" style="color: lightslategray; font-size: 12px;">
+         <div>all max: {{item.max_prob?.all?.mean?.toFixed(1)}}% shrp:{{item.max_prob?.all?.sharp?.toFixed(1)}}</div>
+         <div>now max:{{item.max_prob?.recent?.mean?.toFixed(1)}}% shrp:{{item.max_prob?.recent?.sharp?.toFixed(1)}}</div>
+    </div>
+    <div fxLayout="row"  fxLayoutAlign="space-between center" style="color: lightslategray;font-size: 12px;">
+        <div>min: {{item.max_prob?.all?.mean?.toFixed(1)}}% {{item.max_prob?.all?.sharp?.toFixed(1)}}</div>
+        <div>min:{{item.max_prob?.recent?.mean?.toFixed(1)}}% {{item.max_prob?.recent?.sharp?.toFixed(1)}}</div>
+   </div>
 </div>

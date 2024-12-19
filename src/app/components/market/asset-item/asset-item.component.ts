@@ -1,21 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TickerResolver } from 'src/app/app-config';
+import { TickerResolver } from '../../../app-config';
 
 @Component({
   selector: 'app-asset-item',
   templateUrl: './asset-item.component.html',
-  styleUrls: ['./asset-item.component.css']
+  styleUrls: ['./asset-item.component.css'],
+  standalone: false
 })
 export class AssetItemComponent implements OnInit {
 
-  @Input() item: any;
-  @Input() type: string;
+  @Input() item: any = {};
+  @Input() type: string = "";
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  resolve(a) {
+  resolve(a : any) {
     return  TickerResolver(a)
   } 
 
@@ -26,7 +27,7 @@ export class AssetItemComponent implements OnInit {
 
     const color2 = 'FF0000';
     const color1 = '00FF00';
-    const hex = function(x) {
+    const hex = function(x: any) {
         x = x.toString(16);
         return (x.length == 1) ? '0' + x : x;
     };

@@ -1,85 +1,82 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AngularMaterialModule } from './angular-material.module';
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { httpMockProvider } from './service/http-mock-interceptor';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationService } from './service/authentication-service';
-import { environment } from 'src/environments/environment';
-import { httpOAuth2Provider } from './service/http-oauth2-interceptor';
-import { LoginComponent } from './components/login/login.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ApiKeyComponent } from './components/api-key/api-key.component';
-import { RegisterComponent } from './components/register/register.component';
-import { WalletComponent } from './components/wallet/wallet.component';
-import { ChartsModule } from 'ng2-charts';
-import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
-import { HighchartsChartModule } from 'highcharts-angular';
-import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
-import { MarketComponent } from './components/market/market.component';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import { RouterModule, Routes } from '@angular/router';
+import { MatDialogActions, MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIcon} from '@angular/material/icon';
+import { MatMenuModule} from '@angular/material/menu';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MarketComponent } from './components/market/market.component';
+import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
+import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
+
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'market' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'market', component: MarketComponent }];
+  
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ChangePasswordComponent,
     DashboardComponent,
-    ApiKeyComponent,
-    RegisterComponent,
-    WalletComponent,
     AssetTabComponent,
     AssetItemComponent,
     MarketComponent
   ],
   imports: [
-    BrowserModule,
-    FlexLayoutModule,
-    AngularMaterialModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    ChartsModule,
-    HighchartsChartModule,
-    SocialLoginModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIcon,
+    MatToolbarModule,
+    MatListModule,
+    MatSidenavModule,
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatDialogActions,
+    MatDialogModule,
+    MatIconModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatCardModule,
     NgxGoogleAnalyticsModule.forRoot('G-6S001VRE31'),
-    NgxGoogleAnalyticsRouterModule
+    NgxGoogleAnalyticsRouterModule,
+    HighchartsChartModule,
+    RouterModule.forRoot(routes, { useHash: false })
+
   ],
-  // providers: [httpMockProvider],
-  providers: [
-    environment.httpMock ? httpMockProvider : httpOAuth2Provider,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider(
-              'clientId'
-              )
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

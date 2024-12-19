@@ -1,5 +1,5 @@
 
-export const Setting = {
+export const Setting: Record<string, any> = {
     crypto : {
       url: 'assets/crypto_list.json',
       name: 'Crypto',
@@ -48,8 +48,8 @@ export const Setting = {
     }
   };
   // ETF list https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fetfs.php%3Fexch%3Dcboe
-  export function TickerResolver(a) {
-    const m = {
+  export function TickerResolver(a: string):string {
+    const m : Record<string, string> = {
       'BTC-USD':'Bitcoin',
       'BCH-USD':'Btcoin Cash',
       'ETH-USD':'Etherium',
@@ -92,5 +92,5 @@ export const Setting = {
       'XLV':'Health Care Select Sector SPDR Fund',
 
     };
-    return m[a] || a;
+    return m[a] ?? a;
   };

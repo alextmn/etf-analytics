@@ -2,34 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Highcharts from "highcharts/highstock";
 import { ActivatedRoute } from '@angular/router';
-import { Setting } from 'src/app/app-config';
-import { TickerResolver } from 'src/app/app-config';
+import { Setting } from '../../app-config';
+import { TickerResolver } from '../../app-config';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  standalone: false
 })
 export class DashboardComponent implements OnInit {
 
   CONFIG = Setting
-  signalMaxTable = [];
-  signalMinTable = [];
+  signalMaxTable: any ={};
+  signalMinTable:any = {};
   allData:any = {};
-  marketType: string;
-  ticker: string;
+  marketType = "";
+  ticker = "";
 
   Highcharts: typeof Highcharts = Highcharts;
-  chartOptions: Highcharts.Options;
+  chartOptions: Highcharts.Options = {};
   updateFlag = false;
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(p => {
-      this.chart(this.ticker = p.t);
-      this.marketType = p.type;
+      this.chart(this.ticker = p['t']);
+      this.marketType = p['type'];
     });
   }
 
@@ -61,8 +62,8 @@ export class DashboardComponent implements OnInit {
         events: {
           setExtremes: function(e: any) {
             //console.log(e);
-            const aMin = activePrice.find(a => a[0] >= e.min  )
-            const pMin = ticks.find(a => a[0] >= e.min )
+            const aMin = activePrice.find(a => a[0] >= e.min  ) ?? [1,1]
+            const pMin = ticks.find(a => a[0] >= e.min ) ?? [1,1]
             const r = pMin[1] / aMin[1];
             const chart = e.target.chart;
             chart.series[1].update({

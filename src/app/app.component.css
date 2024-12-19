@@ -13,11 +13,11 @@
 .example-sidenav {
     background-color: #2c343b;
 }
-.mat-list-base .mat-list-item {
+.etf-items {
     color: #dcdcdc;
     font-family: Quicksand,Georgia,"Times New Roman",Times,serif;
     font-size: 20px;
 }
 .parent {
- margin: 1vh;   
+    margin: 1vh;   
 }

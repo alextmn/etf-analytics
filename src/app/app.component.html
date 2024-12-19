@@ -6,30 +6,17 @@
     <h1>ETF Active Analytics Dashboard</h1>
     <span style="flex: 1 1 auto;"></span>
     <div>
-        <button mat-icon-button style="width:auto" matTooltip="My Profile" [matMenuTriggerFor]="accountMenu">
+        <button mat-icon-button style="width:auto" matTooltip="My Profile">
             <mat-icon>account_circle</mat-icon>
-            {{ userName }}
+            
         </button>
-        <div fxFlex="5px"></div>
-        <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
-            <button mat-menu-item (click)="login()" *ngIf="!userName">
-                <mat-icon>login</mat-icon>Login
-            </button>
-            <button mat-menu-item (click)="changePassword()" *ngIf="userName">
-                <mat-icon>account_circle</mat-icon>Change Password
-            </button>
-            <button mat-menu-item (click)="logout()" *ngIf="userName">
-                <mat-icon>exit_to_app</mat-icon>Logout
-            </button>
-        </mat-menu>
     </div>
-    <div fxFlex="25px"></div>
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a routerLink="/market"  fxLayout="row" fxLayoutAlign="left center">
+                <a routerLink="/market">
                     <span class="sbi sbi-ebst"></span>
                     <span class="full-width" *ngIf="isExpanded">Top ETF</span>
                 </a>

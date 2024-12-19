@@ -1,25 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+import { ChartDataset, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-asset-tab',
   templateUrl: './asset-tab.component.html',
-  styleUrls: ['./asset-tab.component.css']
+  styleUrls: ['./asset-tab.component.css'],
+  standalone: false
 })
 export class AssetTabComponent implements OnInit {
-  pchChange: number
-  price: number
+  pchChange = 0
+  price = 0
 
-  @ViewChild('chartCanvas') chartCanvas: ElementRef;
+  @ViewChild('chartCanvas') chartCanvas?: ElementRef;
   @Input() chartStyle = 'gray';
-  @Input() title: string;
-  @Input() subTitle: string;
-  @Input() icon: string;
-  @Input() ticker: string;
+  @Input() title: string = "";
+  @Input() subTitle: string = "";
+  @Input() icon: string = "";
+  @Input() ticker: string = "";
 
-  chartStyleMap= {
+  chartStyleMap: Record<string, any> = {
       orange: {
         borderColor: '#FF9149',
         gradient: 'rgba(255, 145, 73,0.4)',
@@ -40,31 +40,31 @@ export class AssetTabComponent implements OnInit {
  
   constructor(private http: HttpClient,) { }
 
-  public lineChartData: ChartDataSets[] = [];
+  public lineChartData: ChartDataset[] = [];
 
-  public lineChartLabels: Label[] = ["1", "2", "3", "4", "5", "6", "7"];
+  public lineChartLabels: any[] = ["1", "2", "3", "4", "5", "6", "7"];
   public lineChartOptions: ChartOptions = {
     responsive: !0,
     maintainAspectRatio: !1,
-    legend: {
-      display: !1
-    },
-    hover: {
-      mode: "label"
-    },
-    scales: {
-      xAxes: [{
-        display: !1
-      }],
-      yAxes: [{
-        display: !1,
-      }]
-    },
-    title: {
-      display: !1,
-    }
+    // legend: {
+    //   display: !1
+    // },
+    // hover: {
+    //   mode: "index"
+    // },
+    // scales: {
+    //   xAxes: {
+    //     display: !1
+    //   },
+    //   yAxes: {
+    //     display: !1,
+    //   }
+    // },
+    // title: {
+    //   display: !1,
+    // }
   };
-  public lineChartColors: Color[] = [
+  public lineChartColors: any[] = [
     {
       // backgroundColor: 'rgba(255, 145, 73,0.8)',
     },
@@ -81,7 +81,7 @@ export class AssetTabComponent implements OnInit {
     this.price = data.last_price;
     this.showData(data.last_prices);
   }
-  showData(data) {
+  showData(data: any) {
     this.lineChartData = [{
       label: "BTC",
       data: data,
@@ -90,7 +90,7 @@ export class AssetTabComponent implements OnInit {
       pointRadius: 0
     }]
 
-    const n = this.chartCanvas.nativeElement.getContext("2d");
+    const n = this.chartCanvas!.nativeElement.getContext("2d");
     const r = n.createLinearGradient(0, 0, 0, 100)
     r.addColorStop(0, this.chartStyleMap[this.chartStyle].gradient)
     r.addColorStop(1, "rgba(255,255,255,0)")

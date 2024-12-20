@@ -1,18 +1,18 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="marketType && CONFIG[marketType]?.t">
+<div class="flex-align" *ngIf="marketType && CONFIG[marketType]?.t">
     <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
     <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
     <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
 </div>
 <h1>{{resolve}}</h1>
-<div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <div fxLayout="column" fxLayoutAlign="center center" class="info-signal">
-        <div fxLayout="row" >
-            <div fxLayout="column" fxLayoutAlign="center center">
+<div class="flex-align" style="flex-direction: row;">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" class="info-signal">
+        <div style="display: flex; flex-direction: row;" >
+            <div>
                 <div>Last Closing Price</div>
-                <div class="current-signal" style="color: darkgrey;">{{allData?.last_price.toFixed(2)}}</div>
+                <div class="current-signal" style="color: darkgrey; text-align: center;">{{allData?.last_price.toFixed(1)}}</div>
             </div>
             <div style="width: 2vw;"></div>
-            <div fxLayout="column" fxLayoutAlign="center center">
+            <div>
                 <div>Last Signal Value</div>
                 <div class="current-signal">{{allData?.last_signal.toFixed(2)}}</div>
             </div>
@@ -23,15 +23,12 @@
             if the maket is greater then 1 or more then it is strongly overbought. 
             if the maket is greater then -1 or less then it is strongly oversold. </span>
     </div>
-    <div class="info-signal" fxLayoutAlign="center center" fxLayout="column">
+    <div class="info-signal" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <span>Asset-Cash Ratio</span>
-        <span class="current-signal">{{100 * allData?.last_signal_ratio.toFixed(2)}}%</span>
+        <span class="current-signal">{{(100 * allData?.last_signal_ratio).toFixed(0)}}%</span>
         <span class="current-signal-date">Asset-Cash Ratio shows much of the asset should be increased or decreased. 
             When the signal is 0, then the ratio is 100%.
             E.g. 80% means the market is oversold and it better to sell 20% of the asset. If the ratio is 120% the market is oversold and 20% of the asset should be borrowed. </span>
-
-        <!-- <button mat-button>Subscribe</button>
-        <mat-checkbox class="chkSubscribe">Send me only strong signals</mat-checkbox> -->
     </div>
 </div>
 <div style="margin:30px;">
@@ -42,8 +39,8 @@
         <h3 style="text-align: right;color: dimgray;">move range slidebar to see active price gain per slidebar's period</h3>
     </div>
 </div>
-<div style="margin-top:10px;">
-    <div fxFlex="49" fxLayout="column">
+<div style="margin-top:10px; display: flex; flex-direction: row; justify-content: space-evenly;">
+    <div >
         <div class="asset-tab">
             {{ticker}} Best Price Max Signal History
         </div>
@@ -71,7 +68,7 @@
             </tr>
         </table>
     </div>
-    <div fxFlex="49" fxLayout="column">
+    <div>
         <div class="asset-tab">
             {{ticker}} Best Price Min Signal History
         </div>
@@ -100,13 +97,9 @@
         </table>
 
     </div>
-    <div fxFlex="2"></div>
-</div>
-
-<div style="margin-top:10px;">
-    <div fxFlex="49" fxLayout="column" >
-        <div class="asset-tab">
-            {{ticker}} Best Price Max Signal History
+    <div  >
+        <div class="asset-tab" style="min-width: 250px;">
+            {{ticker}} Best Price Stats History
         </div>
         <mat-grid-list cols="2" rowHeight="6:1" class="asset-container">
             <mat-grid-tile>
@@ -114,7 +107,7 @@
             </mat-grid-tile>
             <mat-grid-tile>{{ (100*allData.avg_return_pct).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
-                <div class="text-inside-grid">Annulized Volatility</div>
+                <div class="text-inside-grid">Volatility</div>
             </mat-grid-tile>
             <mat-grid-tile>{{ (100*allData.avg_return_vol).toFixed(1) }}%</mat-grid-tile>
             <mat-grid-tile>
@@ -134,14 +127,7 @@
             </mat-grid-tile>
             <mat-grid-tile>{{ (allData.avg_active_return_sharp).toFixed(2) }}</mat-grid-tile>
         </mat-grid-list>
-    </div>
-    <div fxFlex="49" fxLayout="column" >
-        <div class="asset-tab">
-            Technology
-        </div>
-        <p class="asset-container"><br/>
-            To calculate the signal and asset cash ratio we are using probabilistic programming, which allows to adjust the model based on historical observations. 
-            probabilistic programming is a relatively new field in AI, and we will publish an hands-on article shortly to explain our technology.
-        </p>
-    </div>
-</div>    
+    </div>  
+</div>
+
+  

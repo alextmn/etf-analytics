@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 
 @Component({
@@ -38,7 +39,7 @@ export class AssetTabComponent implements OnInit {
   };
   
  
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   public lineChartData: ChartDataset[] = [];
 
@@ -71,8 +72,9 @@ export class AssetTabComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.chartStyleMap[this.chartStyle].borderColor)
+    this.route.queryParams.subscribe(() => setTimeout(()=> this.ngAfterViewInit12(), 0) )
   }
-  async ngAfterViewInit() {
+  async ngAfterViewInit12() {
     const data = await this.http.get<any>(`assets/${this.ticker}.json`).toPromise();
     this.pchChange=(100 * data.last_change_pct);
     this.price = data.last_price;

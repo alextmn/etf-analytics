@@ -81,3 +81,10 @@ h1 {
   font-size: 3vw; 
   text-align: center;
 }
+
+.flex-align {
+  display: flex;                /* Enables flexbox */
+  flex-wrap: wrap;              /* Allows wrapping of child elements */
+  justify-content: space-around; /* Space around elements horizontally */
+  align-items: center;          /* Align items vertically in the center */
+}

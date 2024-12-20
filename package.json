@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^19.0.4",
     "@angular/platform-browser-dynamic": "^19.0.4",
     "@angular/router": "^19.0.4",
+    "chart.js": "^4.4.7",
     "highcharts-angular": "^4.0.1",
     "ng2-charts": "^7.0.0",
     "ngx-google-analytics": "^14.0.1",

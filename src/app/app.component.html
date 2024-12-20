@@ -24,7 +24,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'world'}" fxLayout="row" fxLayoutAlign="left center">
+                <a [routerLink]="'/market'" [queryParams]="{type:'world'}">
                     <span class="sbi sbi-wicc"></span>
                     <span class="full-width" *ngIf="isExpanded">World ETF</span>
                 </a>
@@ -32,7 +32,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}" fxLayout="row" fxLayoutAlign="left center">
+                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}">
                     <span class="sbi sbi-sol"></span>
                     <span class="full-width" *ngIf="isExpanded">Sector ETF</span>
                 </a>
@@ -41,7 +41,7 @@
 
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}" fxLayout="row" fxLayoutAlign="left center">
+                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}" >
                     <span class="sbi sbi-eur"></span>
                     <span class="full-width" *ngIf="isExpanded">Forex</span>
                 </a>
@@ -49,7 +49,7 @@
         </mat-nav-list>
         <mat-nav-list>
             <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}" fxLayout="row" fxLayoutAlign="left center">
+                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}" >
                     <span class="sbi sbi-btc"></span>
                     <span class="full-width" *ngIf="isExpanded">Crypto Coins</span>
                 </a>

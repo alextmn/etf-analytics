@@ -1,5 +1,5 @@
 
-<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="CONFIG[marketType]?.t">
+<div class="flex-align" *ngIf="CONFIG[marketType]?.t">
     <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
     <app-asset-tab *ngIf="showTopTab2" chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
     <app-asset-tab *ngIf="showTopTab3" chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
@@ -14,7 +14,7 @@
     <h4>For more information and methods please check out our article: <a href="https://alextmn1.medium.com/etf-analysis-using-probabilistic-probabilistic-programing-b67716dc8f27" target="_blank">ETF Analysis Using Probabilistic Programing</a>
     </h4>
     <small>Please click on the signal value to see signal's details.</small>
-    <div  fxLayout="row wrap" fxLayoutAlign="space-around center" >
+    <div  class="flex-align" >
         <div style="width: 350px; height: 120px;" *ngFor="let it of assetList">
             <app-asset-item [item]= "it" [type]='marketType'></app-asset-item>
         </div>

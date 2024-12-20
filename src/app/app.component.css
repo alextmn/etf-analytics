@@ -13,11 +13,13 @@
 .example-sidenav {
     background-color: #2c343b;
 }
-.etf-items {
+.parent a {
+    margin: 1vh;
     color: #dcdcdc;
     font-family: Quicksand,Georgia,"Times New Roman",Times,serif;
     font-size: 20px;
-}
-.parent {
-    margin: 1vh;   
+    text-decoration: none;
+    display: flex;
+    justify-content: left; /* Horizontally align */
+    align-items: center;    /* Vertically align */
 }

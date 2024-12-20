@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ChartDataset, ChartOptions } from 'chart.js';
+import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-asset-tab',
@@ -43,34 +43,31 @@ export class AssetTabComponent implements OnInit {
   public lineChartData: ChartDataset[] = [];
 
   public lineChartLabels: any[] = ["1", "2", "3", "4", "5", "6", "7"];
-  public lineChartOptions: ChartOptions = {
-    responsive: !0,
-    maintainAspectRatio: !1,
+  lineChartOptions: ChartConfiguration['options']  = {
+    responsive: false,
+    maintainAspectRatio: false,
     // legend: {
     //   display: !1
     // },
-    // hover: {
-    //   mode: "index"
-    // },
-    // scales: {
-    //   xAxes: {
-    //     display: !1
-    //   },
-    //   yAxes: {
-    //     display: !1,
-    //   }
-    // },
+    hover: {
+      mode: "index"
+    },
+    scales: {
+      x: {
+        display: false,
+        ticks: {
+          //option 2, use callback to change labels to empty string
+          callback: () => ('')
+        }
+      },
+      y: {
+        display: false,
+      },
+    },
     // title: {
     //   display: !1,
     // }
-  };
-  public lineChartColors: any[] = [
-    {
-      // backgroundColor: 'rgba(255, 145, 73,0.8)',
-    },
-  ];
-  public lineChartLegend = false;
-  public lineChartType = 'line';
+  }
 
   ngOnInit(): void {
     console.log(this.chartStyleMap[this.chartStyle].borderColor)
@@ -82,23 +79,24 @@ export class AssetTabComponent implements OnInit {
     this.showData(data.last_prices);
   }
   showData(data: any) {
+    const n = this.chartCanvas!.nativeElement.getContext("2d");
+    const r = n.createLinearGradient(0, 0, 0, 100)
+    r.addColorStop(0, this.chartStyleMap[this.chartStyle].gradient)
+    r.addColorStop(1, "rgba(255,255,255,0)")
+
     this.lineChartData = [{
       label: "BTC",
       data: data,
       borderColor: this.chartStyleMap[this.chartStyle].borderColor,
       borderWidth: 1.5,
-      pointRadius: 0
+      pointRadius: 0,
+      tension: 0.4,
+      fill: true,
+      backgroundColor: r
     }]
 
-    const n = this.chartCanvas!.nativeElement.getContext("2d");
-    const r = n.createLinearGradient(0, 0, 0, 100)
-    r.addColorStop(0, this.chartStyleMap[this.chartStyle].gradient)
-    r.addColorStop(1, "rgba(255,255,255,0)")
-    this.lineChartColors = [
-      {
-        backgroundColor: r
-      }
-    ]
+    
+    
   }
 
   get iconSbi() {

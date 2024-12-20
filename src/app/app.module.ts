@@ -31,9 +31,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MarketComponent } from './components/market/market.component';
 import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
 import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'market' },
+  { path: '', component: MarketComponent  },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'market', component: MarketComponent }];
   
@@ -46,6 +47,7 @@ const routes: Routes = [
     MarketComponent
   ],
   imports: [
+    BaseChartDirective ,
     HttpClientModule,
     MatGridListModule,
     MatMenuModule,
@@ -75,7 +77,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { useHash: false })
 
   ],
-  providers: [],
+  providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
 })
 

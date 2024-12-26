@@ -19,6 +19,7 @@ export class MarketComponent implements OnInit {
   marketType = "";
   showTopTab3 = true;
   showTopTab2 = true;
+  utcTimestamp = 0;
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -48,6 +49,9 @@ export class MarketComponent implements OnInit {
   private async fetch() {
     this.assetList = 
       await this.http.get<any>(this.CONFIG[this.marketType].url+`?r=${Math.random()}`).toPromise();
+      const t = await this.http.get<any>(`assets/timestamp.json?r=${Math.random()}`).toPromise();
+      this.utcTimestamp = t["processed_ts"] ?? 0;
+      console.log(t,  this.utcTimestamp )
   }
 
   onResize(event: any) {

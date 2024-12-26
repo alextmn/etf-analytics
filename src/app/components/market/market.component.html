@@ -13,7 +13,7 @@
     <h4>Also you can see the historical 6 max and mins returns for the current signals, through all the history (all) and infered to the current maket condition(now) along with the risk metrics <a href="https://www.investopedia.com/terms/s/sharperatio.asp">(sharp ratio)</a>.</h4>
     <h4>For more information and methods please check out our article: <a href="https://alextmn1.medium.com/etf-analysis-using-probabilistic-probabilistic-programing-b67716dc8f27" target="_blank">ETF Analysis Using Probabilistic Programing</a>
     </h4>
-    <small><span *ngIf="utcTimestamp"> Processed: {{ utcTimestamp * 1000 | date: 'medium'  }}. </span>Please click on the signal value to see signal's details.</small>
+    <small><span *ngIf="utcTimestamp"> Processed: {{ utcTimestamp  | date: 'short'  }}. </span>Please click on the signal value to see signal's details.</small>
     <div  class="flex-align" style="justify-content: space-evenly;" >
         <div *ngFor="let it of assetList" style="margin: 10px;">
             <app-asset-item [item]= "it" [type]='marketType'></app-asset-item>

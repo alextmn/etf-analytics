@@ -1,63 +1,75 @@
 <!-- <div class="container cyan"> -->
 <mat-toolbar class="main-toolbar">
-    <button mat-icon-button (click)="isExpanded = !isExpanded">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <h1>ETF Active Analytics Dashboard</h1>
-    <span style="flex: 1 1 auto;"></span>
-    <div>
-        <button mat-icon-button style="width:auto" matTooltip="My Profile">
+    <div class="toolbar-top">
+        <a class="brand" routerLink="/">
+            <h1>ETF Active Analytics</h1>
+        </a>
+        <span style="flex: 1 1 auto;"></span>
+        <button mat-icon-button matTooltip="My Profile" style="color: white;">
             <mat-icon>account_circle</mat-icon>
-            
+        </button>
+        <button mat-icon-button matTooltip="Settings" style="color: white;">
+            <mat-icon>settings</mat-icon>
         </button>
     </div>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+        <a mat-tab-link
+           [routerLink]="'/market'"
+           [queryParams]="{type:'etf'}"
+           routerLinkActive
+           #rla1="routerLinkActive"
+           [active]="rla1.isActive"
+           [routerLinkActiveOptions]="{exact: true}">
+           <span class="sbi sbi-ebst"></span>
+           <span class="tab-label">ETF</span>
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/market'"
+           [queryParams]="{type:'world'}"
+           routerLinkActive
+           #rla2="routerLinkActive"
+           [active]="rla2.isActive"
+           [routerLinkActiveOptions]="{exact: true}">
+           <span class="sbi sbi-wicc"></span>
+           <span class="tab-label">World ETF</span>
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/market'"
+           [queryParams]="{type:'sector'}"
+           routerLinkActive
+           #rla3="routerLinkActive"
+           [active]="rla3.isActive"
+           [routerLinkActiveOptions]="{exact: true}">
+           <span class="sbi sbi-sol"></span>
+           <span class="tab-label">Sector ETF</span>
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/market'"
+           [queryParams]="{type:'forex'}"
+           routerLinkActive
+           #rla4="routerLinkActive"
+           [active]="rla4.isActive"
+           [routerLinkActiveOptions]="{exact: true}">
+           <span class="sbi sbi-eur"></span>
+           <span class="tab-label">Forex</span>
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/market'"
+           [queryParams]="{type:'crypto'}"
+           routerLinkActive
+           #rla5="routerLinkActive"
+           [active]="rla5.isActive"
+           [routerLinkActiveOptions]="{exact: true}">
+           <span class="sbi sbi-btc"></span>
+           <span class="tab-label">Crypto</span>
+        </a>
+    </nav>
 </mat-toolbar>
-<mat-sidenav-container class="example-container" autosize>
-    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
-        <mat-nav-list>
-            <mat-list-item class="parent">
-                <a routerLink="/market">
-                    <span class="sbi sbi-ebst"></span>
-                    <span class="full-width" *ngIf="isExpanded">Top ETF</span>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list>
-            <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'world'}">
-                    <span class="sbi sbi-wicc"></span>
-                    <span class="full-width" *ngIf="isExpanded">World ETF</span>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list>
-            <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'sector'}">
-                    <span class="sbi sbi-sol"></span>
-                    <span class="full-width" *ngIf="isExpanded">Sector ETF</span>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
 
-        <mat-nav-list>
-            <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'forex'}" >
-                    <span class="sbi sbi-eur"></span>
-                    <span class="full-width" *ngIf="isExpanded">Forex</span>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list>
-            <mat-list-item class="parent">
-                <a [routerLink]="'/market'" [queryParams]="{type:'crypto'}" >
-                    <span class="sbi sbi-btc"></span>
-                    <span class="full-width" *ngIf="isExpanded">Crypto Coins</span>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-    </mat-sidenav>
-
-    <router-outlet></router-outlet>
+<div class="content-container">
+    <mat-tab-nav-panel #tabPanel>
+        <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
     <footer style="padding: 1vw;">
         <p>&copy; <a href="http://artifirm.com"> Artifirm Analytics 2025</a></p>
         <p style="line-height:10px; font-size: 10px; color: darkgray;">Disclaimers<br>
@@ -84,7 +96,7 @@
           of this website.
         </p>
       </footer>
-</mat-sidenav-container>
+</div>
 
 
 

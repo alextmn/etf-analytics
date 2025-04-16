@@ -1,24 +1,27 @@
-<div class="btn-glow-blue asset-tile" style="min-width: 300px;" >
-    <div style="display: flex; flex-direction: row; justify-content: space-around;align-items: center;" >
-        <div class="assetTitle">{{item.ticker}}</div>
-        <div>
-            <div class="assetNumber signal" [style] = "'background-color: '+ assetColor +';'">
-                <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">{{item.last_signal  | number : '1.2-2' }}</a></div>
+<div class="asset-tile">
+    <div class="asset-content">
+        <div class="asset-header">
+            <div class="asset-ticker">{{item.ticker}}</div>
+            <div class="asset-signal" [style.background-color]="assetColor">
+                <a [routerLink]="['/dashboard']" 
+                   [queryParams]="{t: item.fullTicker, type: type}">
+                    {{item.last_signal | number:'1.2-2'}}
+                </a>
+            </div>
         </div>
-        <div style>
-            <div class="assetNumber">{{item.last_price  | number : '1.1-1' }}</div>
-            <div class="assetHint">price</div>
-        </div>
-        <!-- <div fxLayout="column" fxLayoutAlign="center center">
-            <div class="assetNumber">{{item.last_signal_ratio  | number : '1.0-0' }}%</div>
-            <div class="assetHint">asset ratio</div>
-        </div> -->
-    </div>
-    <div>
-        <div class="assetHint">
-            <!-- <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">passive return: {{item.avg_return_pct  | number : '1.0-1'}}%, active: {{item.avg_active_return_pct  | number : '1.0-1'}}%</a> -->
-            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.fullTicker, type: type}">{{resolve(item.fullTicker)}}</a>
+        
+        <div class="asset-details">
+            <div class="price-section">
+                <div class="price-value">{{item.last_price | number:'1.1-1'}}</div>
+                <div class="price-label">price</div>
+            </div>
             
+            <div class="asset-info">
+                <a [routerLink]="['/dashboard']" 
+                   [queryParams]="{t: item.fullTicker, type: type}">
+                    {{resolve(item.fullTicker)}}
+                </a>
+            </div>
         </div>
     </div>
     <!-- <div fxLayout="row"  fxLayoutAlign="space-between center" style="color: lightslategray; font-size: 12px; line-height: .5;">

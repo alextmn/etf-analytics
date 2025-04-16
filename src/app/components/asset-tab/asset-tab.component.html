@@ -1,31 +1,48 @@
-<mat-card class="info-card orange-card">
-    <mat-card-content style="padding: 0;">
-        <div style="display: flex; flex-direction: column;">
-            <div style="margin: 1vw; display: flex; justify-content: space-between;align-items: center;">
-                <div style="display: flex; flex-direction: row;">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <i *ngIf="iconSbi" class="sbi" [title]="title" [class]="chartStyleMap[chartStyle].coinCss + ' ' + iconSbi"></i>
-                        <i *ngIf="!iconSbi" class="circle-icon" [title]="title" [style]="'background:' +  chartStyle ">{{icon}}</i>
+<mat-card class="info-card">
+    <mat-card-content>
+        <div class="asset-content">
+            <div class="asset-header">
+                <div class="asset-info">
+                    <div class="asset-icon">
+                        <i *ngIf="iconSbi" 
+                           class="sbi" 
+                           [title]="title" 
+                           [class]="chartStyleMap[chartStyle].coinCss + ' ' + iconSbi">
+                        </i>
+                        <i *ngIf="!iconSbi" 
+                           class="circle-icon" 
+                           [title]="title" 
+                           [style.background]="chartStyle">
+                            {{icon}}
+                        </i>
                     </div>
-                    <div >
-                        <h2>{{title}}</h2>
-                        <h3>{{subTitle}}</h3>
+                    <div class="asset-details">
+                        <h2 class="asset-title">{{title}}</h2>
+                        <h3 class="asset-subtitle">{{subTitle}}</h3>
                     </div>
                 </div>
-                <div  class="text-right">
-                    <h2>${{price!.toFixed(0)}}</h2>
-                    <h3>{{ pchChange!.toFixed(2) }}% <span [class]="'material-icons indicator' + (pchChange > 0 ? 'Green' : 'Red')">{{ pchChange > 0 ? 'north' : 'south'}}</span></h3>
+                <div class="asset-metrics">
+                    <h2 class="asset-price">${{price!.toFixed(0)}}</h2>
+                    <h3 class="asset-change">
+                        {{ pchChange!.toFixed(2) }}%
+                        <span class="material-icons" 
+                              [class]="'indicator' + (pchChange > 0 ? 'Green' : 'Red')">
+                            {{ pchChange > 0 ? 'north' : 'south'}}
+                        </span>
+                    </h3>
                 </div>
             </div>
-            <div style="display: block;">
-                <canvas #chartCanvas baseChart height="75"
-                    [datasets]="lineChartData" [labels]="lineChartLabels"
-                    [options]="lineChartOptions" [legend]="false"
-                    [type]="'line'"
-                    >
+            <div class="chart-container">
+                <canvas #chartCanvas 
+                        baseChart 
+                        height="75"
+                        [datasets]="lineChartData" 
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions" 
+                        [legend]="false"
+                        [type]="'line'">
                 </canvas>
             </div>
         </div>
-
     </mat-card-content>
 </mat-card>

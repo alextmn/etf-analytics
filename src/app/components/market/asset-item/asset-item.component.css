@@ -6,10 +6,28 @@
   }
   .asset-tile {
     display: inline-block;
+    width: 240px;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    margin: 0.75rem;
+  }
+  .asset-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(49, 53, 72, 0.12);
+  }
+  .asset-content {
+    padding: 1.25rem;
+    color: white;
+  }
+  .asset-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
   }
   .assetTitle {
-    font-size: 40px;    
-    color: blue;
+    font-size: 32px;    
+    color: #3498db;
     font-weight: bold;
   }
   .assetHint {
@@ -18,8 +36,28 @@
     text-align: center;
   }
   .assetNumber {
-    font-size: 25px;    
-    color: black;
+    font-size: 24px;    
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  .asset-ticker {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .asset-signal {
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+  }
+  .asset-signal:hover {
+    transform: scale(1.05);
+  }
+  .asset-signal a {
+    color: white;
+    text-decoration: none;
   }
   .signal {
     color: white;
@@ -28,7 +66,45 @@
     padding: 10px;
     margin: 2px;
   }
-
+  .asset-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .price-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .price-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .price-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.2rem;
+  }
+  .asset-info {
+    text-align: right;
+  }
+  .asset-info a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: color 0.2s ease;
+  }
+  .asset-info a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .asset-info a:visited {
+    color: rgba(255, 255, 255, 0.8);
+  }
   a:visited {
     color: white;
     text-decoration: none;

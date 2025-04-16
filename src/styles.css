@@ -1,4 +1,149 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+    /* Primary Colors - Vibrant Blue */
+    --primary-50: #e6f7ff;
+    --primary-100: #bae7ff;
+    --primary-200: #91d5ff;
+    --primary-300: #69c0ff;
+    --primary-400: #40a9ff;
+    --primary-500: #1890ff;  /* Main Brand Color */
+    --primary-600: #096dd9;
+    --primary-700: #0050b3;
+    --primary-800: #003a8c;
+    --primary-900: #002766;
+
+    /* Background Colors - Dark Theme */
+    --bg-dark: #0f1520;      /* Main background */
+    --bg-darker: #0d1219;    /* Darker areas */
+    --bg-lighter: #1e2433;   /* Lighter areas */
+    --bg-card: #161c28;      /* Card background */
+
+    /* Neutral Colors - For Text and Borders */
+    --neutral-50: #ffffff;
+    --neutral-100: #f0f0f0;
+    --neutral-200: #e0e0e0;
+    --neutral-300: #d0d0d0;
+    --neutral-400: #b8b8b8;
+    --neutral-500: #989898;
+    --neutral-600: #787878;
+    --neutral-700: #505050;
+    --neutral-800: #303030;
+    --neutral-900: #1a1a1a;
+
+    /* Success Colors - Green */
+    --success-500: #00b897;
+    --success-600: #00a185;
+
+    /* Warning Colors - Yellow */
+    --warning-500: #ffd666;
+    --warning-600: #ffc53d;
+
+    /* Danger Colors - Red */
+    --danger-500: #ff4d4f;
+    --danger-600: #ff1f1f;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+
+    /* Spacing */
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-6: 1.5rem;
+    --spacing-8: 2rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--neutral-200);
+    background-color: var(--bg-dark);
+    line-height: 1.5;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--neutral-100);
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0;
+}
+
+/* Links */
+a {
+    color: var(--primary-600);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-700);
+}
+
+/* Buttons */
+.mat-mdc-button.mat-primary {
+    background-color: var(--primary-500) !important;
+    color: white !important;
+}
+
+.mat-mdc-button.mat-primary:hover {
+    background-color: var(--primary-600) !important;
+}
+
+/* Cards */
+.mat-mdc-card {
+    border-radius: var(--spacing-2) !important;
+    box-shadow: var(--shadow-md) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--neutral-800) !important;
+}
+
+/* Tables */
+.mat-mdc-table {
+    background-color: var(--bg-card) !important;
+    color: var(--neutral-300) !important;
+}
+
+.mat-mdc-header-cell {
+    color: var(--neutral-700) !important;
+    font-weight: 600 !important;
+}
+
+/* Form Fields */
+.mat-mdc-form-field {
+    width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neutral-700);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-600);
+}

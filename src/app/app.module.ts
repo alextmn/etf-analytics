@@ -25,6 +25,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatIcon} from '@angular/material/icon';
 import { MatMenuModule} from '@angular/material/menu';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
     MatMenuModule,
     MatIcon,
     MatToolbarModule,
+    MatTabsModule,
     MatListModule,
     MatSidenavModule,
     FormsModule,

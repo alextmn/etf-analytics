@@ -1,9 +1,11 @@
-<div class="flex-align" *ngIf="marketType && CONFIG[marketType]?.t">
-    <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
-    <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
-    <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
-</div>
-<h1>{{resolve}}</h1>
+<div class="asset-container">
+    <h1>ETF Active Analytics Dashboard</h1>
+    
+    <div class="flex-align" *ngIf="marketType && CONFIG[marketType]?.t">
+        <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
+        <app-asset-tab chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
+        <app-asset-tab chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
+    </div>
 <div class="flex-align" style="flex-direction: row;">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" class="info-signal">
         <div style="display: flex; flex-direction: row;" >

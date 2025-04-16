@@ -1,11 +1,16 @@
 
-<div class="flex-align" *ngIf="CONFIG[marketType]?.t">
-    <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
-    <app-asset-tab *ngIf="showTopTab2" chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
-    <app-asset-tab *ngIf="showTopTab3" chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
-</div>
 <div class="asset-container">
+    <div class="flex-align" *ngIf="CONFIG[marketType]?.t">
+        <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
+        <app-asset-tab *ngIf="showTopTab2" chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>
+        <app-asset-tab *ngIf="showTopTab3" chartStyle='blue' [title]='CONFIG[marketType].t[2].title' [ticker]='CONFIG[marketType].t[2].ticker' [subTitle]='CONFIG[marketType].t[2].subTitle' [icon]='CONFIG[marketType].t[2].icon' ></app-asset-tab>
+    </div>
     <h1>{{CONFIG[marketType]?.name}} Daily Market Trading Signals</h1>
+    <div class="flex-align" style="justify-content: space-evenly;" >
+        <div *ngFor="let it of assetList" style="margin: 10px;">
+            <app-asset-item [item]="it" [type]='marketType'></app-asset-item>
+        </div>
+    </div>
     <h4>Based on cutting‐edge AI and machine learning algorithms, our system sends signals that allow proactive risk analysis of portfolios across major asset classes in equities, rates, credit, commodities, crypto, and FX. This website is an attempt to apply the probabilistic programming methods in major markets. Probabilistic programming is a new field in AI, that explores data in terms of their probabilities related to the current observations.</h4>
     <h4>For each asset class, the system generates a signal on a z-score scale. This means that under most normal circumstances the signal would oscillate between [-1;+1], however under more extreme conditions, it could go to 4-6x range, and even higher.</h4>
     <h4>A positive value signal is considered overbought/expensive; a negative value signal is oversold/cheap.</h4>
@@ -14,10 +19,4 @@
     <h4>For more information and methods please check out our article: <a href="https://alextmn1.medium.com/etf-analysis-using-probabilistic-probabilistic-programing-b67716dc8f27" target="_blank">ETF Analysis Using Probabilistic Programing</a>
     </h4>
     <small><span *ngIf="utcTimestamp"> Processed: {{ utcTimestamp  | date: 'short'  }}. </span>Please click on the signal value to see signal's details.</small>
-    <div  class="flex-align" style="justify-content: space-evenly;" >
-        <div *ngFor="let it of assetList" style="margin: 10px;">
-            <app-asset-item [item]= "it" [type]='marketType'></app-asset-item>
-        </div>
-    </div>
 </div>
-

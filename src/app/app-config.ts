@@ -1,5 +1,14 @@
 
 export const Setting: Record<string, any> = {
+    etf : {
+      url: 'assets/etf_list.json',
+      name: 'ETF',
+      t: [
+        { title: 'SPY', ticker:'SPY', subTitle:'S&P 500 Index', icon:'S'},
+        { title: 'GLD', ticker:'GLD', subTitle:'Gold', icon:'G'},
+        { title: 'IEF', ticker:'IEF', subTitle:'7-10 Year US Treasury', icon:'I'},
+      ],
+    },
     crypto : {
       url: 'assets/crypto_list.json',
       name: 'Crypto',
@@ -9,16 +18,7 @@ export const Setting: Record<string, any> = {
         { title: 'BCH', ticker:'BCH-USD', subTitle:'Bitcon Cash', icon:'sbi-bch'},
       ],
     },
-    etf : {
-      url: 'assets/etf_list.json',
-      name: 'ETF',
-      t: [
-        { title: 'GLD', ticker:'GLD', subTitle:'Gold', icon:'G'},
-        { title: 'IEF', ticker:'IEF', subTitle:'7-10 Year US Treasury', icon:'I'},
-        { title: 'SPY', ticker:'SPY', subTitle:'S&P 500 Index', icon:'S'},
-      ],
 
-    },
     forex : {
       url: 'assets/forex_list.json',
       name: 'Forex',

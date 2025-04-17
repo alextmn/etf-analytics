@@ -33,16 +33,16 @@
             E.g. 80% means the market is oversold and it better to sell 20% of the asset. If the ratio is 120% the market is oversold and 20% of the asset should be borrowed. </span>
     </div>
 </div>
-<div style="margin:30px;">
-    <div style="background-color: white;">
+<div class="chart-container">
+    <div class="chart-wrapper">
         <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions"
             [constructorType]="'stockChart'" style="width: 100%; height: 600px; display: block;"
             [(update)]="updateFlag"></highcharts-chart>
-        <h3 style="text-align: right;color: dimgray;">move range slidebar to see active price gain per slidebar's period</h3>
+        <h3 class="chart-note">move range slidebar to see active price gain per slidebar's period</h3>
     </div>
 </div>
-<div style="margin-top:10px; display: flex; flex-direction: row; justify-content: space-evenly;">
-    <div >
+<div class="tables-container">
+    <div>
         <div class="asset-tab">
             {{ticker}} Best Price Max Signal History
         </div>

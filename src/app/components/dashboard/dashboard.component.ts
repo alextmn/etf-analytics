@@ -45,18 +45,54 @@ export class DashboardComponent implements OnInit {
 
     // Create the chart
     this.chartOptions = {
+      chart: {
+        backgroundColor: '#2c3e50',
+        style: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(44, 62, 80, 0.95)',
+        borderColor: '#3498db',
+        borderRadius: 8,
+        borderWidth: 1,
+        style: {
+          color: '#fff'
+        },
+        valueDecimals: 2,
+        shadow: false,
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        series: {
+          color: '#3498db',
+          lineWidth: 2
+        }
+      },
       rangeSelector: {
         selected: 2
       },
-
       legend: {
-        enabled: true
+        enabled: true,
+        itemStyle: {
+          color: '#fff'
+        },
+        itemHoverStyle: {
+          color: '#3498db'
+        }
       },
       title: {
         text: `${this.resolve} Backtest Using Asset-Cash Ratio`,
+        style: {
+          color: '#fff'
+        }
       },
       subtitle: {
-        text: 'Hover to see passive price and actively managed value at points'
+        text: 'Hover to see passive price and actively managed value at points',
+        style: {
+          color: 'rgba(255,255,255,0.8)'
+        }
       },
       xAxis: {
         events: {
@@ -74,37 +110,48 @@ export class DashboardComponent implements OnInit {
       },
       yAxis: [{
         labels: {
-          align: 'left'
+          align: 'left',
+          style: {
+            color: '#fff'
+          }
         },
         height: '80%',
         resize: {
           enabled: true
-        }
+        },
+        gridLineColor: 'rgba(255,255,255,0.1)'
       }, {
         labels: {
-          align: 'left'
+          align: 'left',
+          style: {
+            color: '#fff'
+          }
         },
         top: '80%',
         height: '20%',
-        offset: 0
+        offset: 0,
+        gridLineColor: 'rgba(255,255,255,0.1)'
       }],
 
       series: [{
         data: ticks,
         type: 'line',
-        color: 'lightblue',
+        color: '#3498db',
         name: 'Price',
+        lineWidth: 2
       }, {
         data: activePrice,
         type: 'line',
-        color: 'orange',
+        color: '#e67e22',
         name: 'Actively Managed',
+        lineWidth: 2
       }, {
         name: 'Signal Strength',
         data: magnitude,
         yAxis: 1,
         type: 'column',
-        color: "orange"
+        color: '#e67e22',
+        borderRadius: 2
       }]
     };
 

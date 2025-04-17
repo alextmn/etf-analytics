@@ -7,80 +7,113 @@ span.right {
   color: var(--primary-400);
 }
 
-.main-div{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.tables-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
 
- .asset-tab {
-  background: var(--bg-lighter);
-  color: var(--neutral-50);
-  padding: 0.75rem 1rem;
+.asset-tab {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: white;
+  padding: 1rem 1.5rem;
   margin: 1rem 0;
-  border-radius: 6px;
-  border: 1px solid var(--neutral-700);
+  border-radius: 8px;
   font-weight: 600;
- }
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+  text-align: center;
+  font-size: 1.1rem;
+}
 
- .table-tab th {
-  background-color: var(--bg-lighter);
-  color: var(--neutral-200);
+.table-tab {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+}
+
+.table-tab th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
   font-weight: 600;
   padding: 1rem;
   text-align: center;
-  border-bottom: 1px solid var(--neutral-800);
- }
-
- .table-tab td {
-  padding: 0.75rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--neutral-800);
-  color: var(--neutral-300);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
- .table-tab {
-  width: 100%;
-  text-align: right;
-  border-collapse: collapse;
-  margin: 1rem 0 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--neutral-700);
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #e7e4e0;
- }
+.table-tab td {
+  padding: 0.875rem 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+}
+
+.table-tab tr:last-child td {
+  border-bottom: none;
+}
+
+.table-tab tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05);
+}
 
 .highlight {
-  background-color: var(--bg-dark);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .asset-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: var(--bg-card);
-  color: var(--neutral-300);
-  border-radius: 8px;
-  border: 1px solid var(--neutral-700);
+  background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+  color: #fff;
+  min-height: 100vh;
 }
 
 .text-inside-grid {
-  position: absolute;
-  left: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  padding-left: 1rem;
+}
+
+.mat-grid-list.asset-container {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: 12px;
+  padding: 1rem !important;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+}
+
+.mat-grid-tile {
+  background: transparent !important;
+}
+
+.mat-grid-tile-content {
+  color: white !important;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .idicator_up {
-  color: var(--success-500);
+  color: #2ecc71;
   font-size: 16px !important;
   vertical-align: text-bottom;
+  margin-left: 4px;
 }
 
 .idicator_down {
-  color: var(--danger-500);
+  color: #e74c3c;
   font-size: 16px !important;
   vertical-align: text-bottom;
+  margin-left: 4px;
 }
 
 .info-signal {
@@ -88,23 +121,46 @@ span.right {
   width: 100%;
   max-width: 600px;
   margin: 1rem auto;
-  background: var(--bg-lighter);
-  border: 1px solid var(--neutral-700);
-  border-radius: 8px;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.info-signal:hover {
+  transform: translateY(-2px);
 }
 
 .current-signal {
-  font-size: 1.5rem;
-  color: var(--primary-300);
+  font-size: 2.5rem;
+  color: white;
   font-weight: bold;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .current-signal-date {
-  font-size: 0.875rem;
-  color: var(--neutral-400);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.info-signal > span:first-child {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .chkSubscribe {
@@ -125,13 +181,14 @@ span.right {
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--neutral-50);
-  margin-bottom: 1.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
   text-align: center;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .flex-align {
@@ -139,4 +196,74 @@ h1 {
   flex-wrap: wrap;              /* Allows wrapping of child elements */
   justify-content: space-around; /* Space around elements horizontally */
   align-items: center;          /* Align items vertically in the center */
+}
+
+.chart-container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.chart-wrapper {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.chart-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+.chart-wrapper ::ng-deep .highcharts-background {
+  fill: transparent;
+}
+
+.chart-wrapper ::ng-deep .highcharts-grid-line {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.chart-wrapper ::ng-deep .highcharts-label text {
+  fill: #fff !important;
+}
+
+.chart-wrapper ::ng-deep .highcharts-axis-line {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.chart-wrapper ::ng-deep .highcharts-scrollbar {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.chart-wrapper ::ng-deep .highcharts-button {
+  fill: #3498db;
+  stroke: #2980b9;
+}
+
+.chart-wrapper ::ng-deep .highcharts-button text {
+  fill: #fff;
+}
+
+.chart-wrapper ::ng-deep .highcharts-tooltip {
+  filter: none !important;
+}
+
+.chart-wrapper ::ng-deep .highcharts-tooltip text {
+  fill: #fff !important;
+  font-weight: 500;
+}
+
+.chart-wrapper ::ng-deep .highcharts-tooltip-box {
+  fill: rgba(44, 62, 80, 0.95);
+  stroke: #3498db;
+  stroke-width: 1px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.chart-note {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: normal;
 }

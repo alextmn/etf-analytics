@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TickerResolver } from '../../../app-config';
+import { PortfolioService } from '../../../services/portfolio.service';
 
 @Component({
   selector: 'app-asset-item',
@@ -7,37 +8,29 @@ import { TickerResolver } from '../../../app-config';
   styleUrls: ['./asset-item.component.css'],
   standalone: false
 })
-export class AssetItemComponent implements OnInit {
-
+export class AssetItemComponent {
   @Input() item: any = {};
   @Input() type: string = "";
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private portfolioService: PortfolioService) {}
+
+  resolve(a: string) {
+    return TickerResolver(a);
   }
 
-  resolve(a : any) {
-    return  TickerResolver(a)
-  } 
-
   get assetColor() {
-    let ratio = (this.item.last_signal + 2.)/ 4.
-    ratio = ratio > 1 ? 1 : ratio;
-    ratio = ratio < 0 ? 0 : ratio;
+    return this.item.last_signal > 0 ? '#27ae60' : '#e74c3c';
+  }
 
-    const color2 = 'FF0000';
-    const color1 = '00FF00';
-    const hex = function(x: any) {
-        x = x.toString(16);
-        return (x.length == 1) ? '0' + x : x;
-    };
+  addToPortfolio() {
+    if (!this.item?.ticker) {
+      console.error('Invalid item:', this.item);
+      return;
+    }
+    this.portfolioService.addToPortfolio(this.item.ticker);
+  }
 
-    const r = Math.ceil(parseInt(color1.substring(0,2), 16) * ratio + parseInt(color2.substring(0,2), 16) * (1-ratio));
-    const g = Math.ceil(parseInt(color1.substring(2,4), 16) * ratio + parseInt(color2.substring(2,4), 16) * (1-ratio));
-    const b = Math.ceil(parseInt(color1.substring(4,6), 16) * ratio + parseInt(color2.substring(4,6), 16) * (1-ratio));
-
-    const middle = hex(r) + hex(g) + hex(b);
-
-    return `#${middle}`;
+  isInPortfolio(): boolean {
+    return this.portfolioService.isInPortfolio(this.item.ticker);
   }
 }

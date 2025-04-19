@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from './services/portfolio.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
@@ -8,11 +9,12 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   styleUrls: ['./app.component.css'],
   standalone: false
 })
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
   title = 'cognitive-ui';
 
   isExpanded = true;
   constructor(
+    public portfolioService: PortfolioService,
     //private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog) {}
 

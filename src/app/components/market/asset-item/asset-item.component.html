@@ -23,6 +23,11 @@
                 </a>
             </div>
         </div>
+        <div class="portfolio-action">
+            <button class="btn-portfolio" (click)="addToPortfolio()" [disabled]="isInPortfolio()">
+                {{ isInPortfolio() ? 'In Portfolio' : 'Add to Portfolio' }}
+            </button>
+        </div>
     </div>
     <!-- <div fxLayout="row"  fxLayoutAlign="space-between center" style="color: lightslategray; font-size: 12px; line-height: .5;">
          <div>all max: {{item.max_prob?.all?.mean?.toFixed(1)}}% shrp:{{item.max_prob?.all?.sharp?.toFixed(1)}}</div>

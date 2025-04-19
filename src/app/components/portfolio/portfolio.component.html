@@ -1,0 +1,73 @@
+<style>
+  .portfolio-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(25, 118, 210, 0.1);
+    border-radius: 8px;
+  }
+
+  .portfolio-header h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+</style>
+
+<div class="portfolio-container">
+  <div class="portfolio-header">
+    <i class="fas fa-briefcase" style="color: #64B5F6; font-size: 24px; margin-right: 10px;"></i>
+    <h2 style="color: #90CAF9; margin: 0;">My Portfolio</h2>
+  </div>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr style="color: #90CAF9; font-weight: bold;">
+          <th>Ticker</th>
+          <th>Current Signal</th>
+          <th>Asset/Cash Ratio</th>
+          <th>Last Price</th>
+          <th>Annual Return</th>
+          <th>Annual Active Return</th>
+          <th style="color: #FFD700; font-size: 1.1em;">Allocation</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of portfolioItems">
+          <td>
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.ticker}" style="color: #64B5F6">{{item.ticker}}</a>
+          </td>
+          <td>
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.ticker}"
+               [ngStyle]="{'color': item.signal?.last_signal > 0 ? '#4CAF50' : '#FF5252'}">
+              {{item.signal?.last_signal | number:'1.2-2'}}
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.ticker}"
+               [ngStyle]="{'color': item.signal?.last_signal_ratio >= 100 ? '#4CAF50' : '#FF5252'}">
+              {{item.signal?.last_signal_ratio | number:'1.2-2'}}%
+            </a>
+          </td>
+          <td style="color: #FFFFFF">{{item.signal?.last_price | number:'1.2-2'}}</td>
+          <td [ngStyle]="{'color': item.signal?.avg_return_pct > 0 ? '#4CAF50' : '#FF5252'}">
+            {{item.signal?.avg_return_pct | number:'1.2-2'}}%
+          </td>
+          <td [ngStyle]="{'color': item.signal?.avg_active_return_pct > 0 ? '#4CAF50' : '#FF5252'}">
+            {{item.signal?.avg_active_return_pct | number:'1.2-2'}}%
+          </td>
+          <td [ngStyle]="{'color': item.signal?.allocation > 0 ? '#FFD700' : '#FF5252', 'font-weight': 'bold', 'font-size': '1.1em'}">
+            {{item.signal?.allocation | number:'1.2-2'}}%
+          </td>
+          <td>
+            <button class="btn-remove" (click)="removeFromPortfolio(item.ticker)">
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

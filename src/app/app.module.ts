@@ -32,20 +32,23 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MarketComponent } from './components/market/market.component';
 import { AssetTabComponent } from './components/asset-tab/asset-tab.component';
 import { AssetItemComponent } from './components/market/asset-item/asset-item.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 const routes: Routes = [
   { path: '', component: MarketComponent  },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'portfolio', component: PortfolioComponent },
   { path: 'market', component: MarketComponent }];
-  
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AssetTabComponent,
     AssetItemComponent,
-    MarketComponent
+    MarketComponent,
+    PortfolioComponent
   ],
   imports: [
     BaseChartDirective ,

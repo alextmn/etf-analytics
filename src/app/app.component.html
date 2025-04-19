@@ -1,12 +1,53 @@
 <!-- <div class="container cyan"> -->
+<style>
+  .portfolio-nav-button {
+    background: #2196F3 !important;
+    color: white !important;
+    margin-right: 16px;
+    padding: 0 16px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 18px !important;
+    font-weight: 500;
+  }
+
+  .portfolio-nav-button:hover {
+    background: #1976D2 !important;
+  }
+
+  .portfolio-nav-button mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .portfolio-badge {
+    background: #FF4081;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 8px;
+    min-width: 20px;
+    text-align: center;
+  }
+</style>
+
 <mat-toolbar class="main-toolbar">
     <div class="toolbar-top">
         <a class="brand" routerLink="/">
             <h1>ETF Active Analytics</h1>
         </a>
         <span style="flex: 1 1 auto;"></span>
-        <button mat-icon-button matTooltip="My Profile" style="color: white;">
-            <mat-icon>account_circle</mat-icon>
+        <button mat-flat-button [routerLink]="['/portfolio']" class="portfolio-nav-button">
+            <mat-icon>account_balance</mat-icon>
+            <span>User's Portfolio</span>
+            <span class="portfolio-badge" *ngIf="(portfolioService.portfolio$ | async)?.length">
+              {{(portfolioService.portfolio$ | async)?.length}}
+            </span>
         </button>
         <button mat-icon-button matTooltip="Settings" style="color: white;">
             <mat-icon>settings</mat-icon>

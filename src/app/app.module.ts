@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { HelpSidebarComponent } from './components/help-sidebar/help-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -43,6 +44,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    HelpSidebarComponent,
     AppComponent,
     DashboardComponent,
     AssetTabComponent,

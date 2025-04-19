@@ -1,5 +1,6 @@
-
-<div class="asset-container">
+<div class="market-container">
+  <app-help-sidebar></app-help-sidebar>
+  <div class="asset-container">
     <div class="flex-align" *ngIf="CONFIG[marketType]?.t">
         <app-asset-tab chartStyle='orange' [title]='CONFIG[marketType].t[0].title' [ticker]='CONFIG[marketType].t[0].ticker' [subTitle]='CONFIG[marketType].t[0].subTitle' [icon]='CONFIG[marketType].t[0].icon'></app-asset-tab>
         <app-asset-tab *ngIf="showTopTab2" chartStyle='gray' [title]='CONFIG[marketType].t[1].title' [ticker]='CONFIG[marketType].t[1].ticker' [subTitle]='CONFIG[marketType].t[1].subTitle' [icon]='CONFIG[marketType].t[1].icon'></app-asset-tab>

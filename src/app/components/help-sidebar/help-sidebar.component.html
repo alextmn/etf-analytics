@@ -1,0 +1,52 @@
+<div class="help-sidebar" [class.open]="isOpen">
+  <button class="toggle-button" (click)="toggle()">
+    <mat-icon>{{ isOpen ? 'close' : 'help_outline' }}</mat-icon>
+    <span>{{ isOpen ? 'Close' : 'Help Guide' }}</span>
+  </button>
+  
+  <div class="content">
+    <h2>📈 What Does the Signal Mean?</h2>
+    <p>
+      Each ETF is analyzed daily using probabilistic programming, a smart AI technique that looks at past price behavior 
+      and market trends to estimate whether an asset is:
+    </p>
+    <ul>
+      <li><strong>Cheap</strong> (💸 signal < 0) — potentially undervalued</li>
+      <li><strong>Expensive</strong> (💰 signal > 0) — possibly overbought</li>
+      <li><strong>Neutral</strong> (⚖️ signal ≈ 0) — fairly priced</li>
+    </ul>
+    <p>
+      The Signal is shown on a z-score scale — similar to how weather forecasts use percentages to show probability. 
+      Most values are between -1 and +1, but during volatile conditions, the signal can spike higher or lower.
+    </p>
+
+    <h2>🧮 What Should You Do?</h2>
+    <p>
+      💡 The signal automatically adjusts the Asset/Cash Ratio, telling you how much of your portfolio to invest in that ETF:
+    </p>
+    <ul>
+      <li>Signal 0 → 100% asset (neutral market)</li>
+      <li>Signal -1 → ~110% asset (buy more, even borrow)</li>
+      <li>Signal +1 → ~90% asset (reduce exposure, hold more cash)</li>
+    </ul>
+    <p class="highlight">We do the math for you. ✅</p>
+
+    <h2>➕ Add to Portfolio</h2>
+    <p>
+      Click "Add to Portfolio" to use the signal and get your personalized allocation percentage. 
+      This helps you build a diversified, dynamic ETF portfolio managed by smart analytics.
+    </p>
+    <p class="highlight">
+      You don't need to be a pro to start. Just follow the signals. 📊
+    </p>
+
+    <div class="article-link">
+      <p>
+        For more information and methods please check out our article:
+        <a href="https://alextmn1.medium.com/etf-analysis-using-probabilistic-probabilistic-programing-b67716dc8f27" target="_blank">
+          ETF Analysis Using Probabilistic Programming
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

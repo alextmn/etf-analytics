@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HelpSidebarComponent } from '../help-sidebar/help-sidebar.component';
 import { ActivatedRoute } from '@angular/router';
 import { Setting } from '../../app-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';

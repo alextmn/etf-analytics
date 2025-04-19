@@ -1,0 +1,152 @@
+.help-sidebar {
+  position: fixed;
+  top: 64px; /* Height of the top toolbar */
+  right: -400px;
+  width: 400px;
+  height: calc(100vh - 64px);
+  background: #1E1E1E;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-in-out;
+  z-index: 100;
+  color: #FFFFFF;
+}
+
+.help-sidebar.open {
+  right: 0;
+}
+
+.help-sidebar.open .toggle-button {
+  right: 400px;
+}
+
+.toggle-button {
+  position: fixed;
+  right: 0;
+  top: 200px;
+  background: #2196F3;
+  border: none;
+  border-radius: 24px 0 0 24px;
+  padding: 12px 20px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  min-width: 48px;
+  height: 48px;
+  transition: all 0.3s ease-in-out;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.toggle-button:hover {
+  background: #1976D2;
+  padding-right: 24px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.article-link {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-link p {
+  font-size: 14px;
+  color: #90CAF9;
+  margin: 0;
+}
+
+.article-link a {
+  color: #64B5F6;
+  text-decoration: none;
+  display: block;
+  margin-top: 8px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.article-link a:hover {
+  color: #2196F3;
+  text-decoration: underline;
+}
+
+h2 {
+  color: #90CAF9;
+  font-size: 1.5em;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #E0E0E0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+  color: #E0E0E0;
+}
+
+li:before {
+  content: "•";
+  color: #64B5F6;
+  position: absolute;
+  left: 8px;
+}
+
+.highlight {
+  background: rgba(33, 150, 243, 0.1);
+  border-left: 4px solid #2196F3;
+  padding: 12px;
+  border-radius: 0 4px 4px 0;
+  margin: 20px 0;
+}
+
+strong {
+  color: #90CAF9;
+  font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #616161;
+}

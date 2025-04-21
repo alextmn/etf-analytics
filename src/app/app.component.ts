@@ -10,7 +10,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   standalone: false
 })
 export class AppComponent implements OnInit {
-  title = 'cognitive-ui';
+  title = 'ETF Smart Active Analytics';
 
   isExpanded = true;
   constructor(

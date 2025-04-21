@@ -15,7 +15,7 @@ export const Setting: Record<string, any> = {
       t: [
         { title: 'BTC', ticker:'BTC-USD', subTitle:'Bitcoin', icon:'sbi-btc'},
         { title: 'ETH', ticker:'ETH-USD', subTitle:'Etherium', icon:'sbi-eth'},
-        { title: 'BCH', ticker:'BCH-USD', subTitle:'Bitcon Cash', icon:'sbi-bch'},
+        { title: 'SOL', ticker:'SOL-USD', subTitle:'Solana', icon:'sbi-sol'},
       ],
     },
 
@@ -51,7 +51,7 @@ export const Setting: Record<string, any> = {
   export function TickerResolver(a: string):string {
     const m : Record<string, string> = {
       'BTC-USD':'Bitcoin',
-      'BCH-USD':'Btcoin Cash',
+      'SOL-USD':'Solana',
       'ETH-USD':'Etherium',
       'EOS-USD':'EOS',
       

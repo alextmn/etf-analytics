@@ -37,10 +37,10 @@
       <tbody>
         <tr *ngFor="let item of portfolioItems">
           <td>
-            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.ticker}" style="color: #64B5F6">{{item.ticker}}</a>
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.tickerWithSuffix}" style="color: #64B5F6">{{item.ticker}}</a>
           </td>
           <td>
-            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.ticker}"
+            <a [routerLink]="['/dashboard']" [queryParams]="{t: item.tickerWithSuffix}"
                [ngStyle]="{'color': item.signal?.last_signal > 0 ? '#4CAF50' : '#FF5252'}">
               {{item.signal?.last_signal | number:'1.2-2'}}
             </a>
@@ -69,5 +69,12 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="footer-actions">
+    <button mat-stroked-button color="warn" (click)="resetAllData()" class="reset-button">
+      <mat-icon>delete_sweep</mat-icon>
+      Reset All Data
+    </button>
   </div>
 </div>

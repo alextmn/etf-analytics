@@ -1,3 +1,28 @@
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.reset-button:hover {
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.reset-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
 .portfolio-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -11,10 +36,7 @@ h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
-  margin-top: 32px;
-  margin-bottom: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
+  margin-bottom: 2rem;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -85,33 +107,6 @@ tr:hover td {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
-}
-
-.footer-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
-}
-
-.reset-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-color: #f44336;
-  color: #f44336;
-}
-
-.reset-button:hover {
-  background: rgba(244, 67, 54, 0.1);
-}
-
-.reset-button mat-icon {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
 }
 
 @media (max-width: 768px) {

@@ -36,12 +36,32 @@ export class PortfolioService {
       }
       
       try {
-        const data = await this.http.get<any>(`assets/${ticker}.json?r=${Math.random()}`).toPromise();
+        // Try all possible suffix variants
+        let data;
+        let successfulSuffix = '';
+        const suffixes = ['', '-USD', '=X'];
+        
+        for (const suffix of suffixes) {
+          try {
+            data = await this.http.get<any>(`assets/${ticker}${suffix}.json?r=${Math.random()}`).toPromise();
+            successfulSuffix = suffix; // Store the successful suffix
+            break; // If successful, exit the loop
+          } catch {
+            // Continue to next suffix if this one fails
+            continue;
+          }
+        }
+        
+        if (!data) {
+          throw new Error('No data found for any suffix variant');
+        }
+
         if (data) {
           const ratio = data.last_signal_ratio * 100;
           totalRatio += ratio;
           items.push({
             ticker,
+            tickerWithSuffix: ticker + successfulSuffix, // Store the full ticker with suffix
             signal: {
               last_signal: data.last_signal,
               last_price: data.last_price,
@@ -88,10 +108,18 @@ export class PortfolioService {
     }
   }
 
-  removeFromPortfolio(ticker: string) {
-    const current = this.portfolioSubject.value;
-    const updated = current.filter(t => t !== ticker);
-    this.savePortfolio(updated);
+  async removeFromPortfolio(ticker: string) {
+    const currentPortfolio = this.portfolioSubject.getValue();
+    const updatedPortfolio = currentPortfolio.filter(item => item !== ticker);
+    this.portfolioSubject.next(updatedPortfolio);
+    this.updateLocalStorage(updatedPortfolio);
+    await this.updatePortfolioData(); // Refresh the portfolio data
+  }
+
+  async clearPortfolio() {
+    this.portfolioSubject.next([]);
+    localStorage.removeItem(this.STORAGE_KEY);
+    this.portfolio$.next([]); // Clear the portfolio data immediately
   }
 
   isInPortfolio(ticker: string): boolean {
@@ -100,5 +128,9 @@ export class PortfolioService {
 
   getPortfolio(): string[] {
     return this.portfolioSubject.value;
+  }
+
+  private updateLocalStorage(portfolio: string[]) {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(portfolio));
   }
 }
